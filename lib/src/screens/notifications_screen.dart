@@ -12,39 +12,33 @@ class NotificationsScreen extends StatefulWidget {
 
 class _NotificationsScreenState extends State<NotificationsScreen> {
   final List<NotificationModel> notifications = <NotificationModel>[
-    NotificationModel(
-        "Force Touches website has been broken down, Please check it ASAP",
-        "Last update at 10.00 A.M"),
-    NotificationModel(
-        "Force Touches website has been broken down, Please check it ASAP",
-        "Last update at 10.00 A.M"),
-    NotificationModel(
-        "Force Touches website has been broken down, Please check it ASAP",
-        "Last update at 10.00 A.M"),
-    NotificationModel(
-        "Force Touches website has been broken down, Please check it ASAP",
-        "Last update at 10.00 A.M"),
-    NotificationModel(
-        "Force Touches website has been broken down, Please check it ASAP",
-        "Last update at 10.00 A.M"),
-    NotificationModel(
-        "Force Touches website has been broken down, Please check it ASAP",
-        "Last update at 10.00 A.M"),
-    NotificationModel(
-        "Force Touches website has been broken down, Please check it ASAP",
-        "Last update at 10.00 A.M"),
-    NotificationModel(
-        "Force Touches website has been broken down, Please check it ASAP",
-        "Last update at 10.00 A.M"),
-    NotificationModel(
-        "Force Touches website has been broken down, Please check it ASAP",
-        "Last update at 10.00 A.M"),
-    NotificationModel(
-        "Force Touches website has been broken down, Please check it ASAP",
-        "Last update at 10.00 A.M"),
-    NotificationModel(
-        "Force Touches website has been broken down, Please check it ASAP",
-        "Last update at 10.00 A.M"),
+    NotificationModel("Force Touches website", "Last update at 10.00 A.M"),
+    NotificationModel("Force Touches website", "Last update at 10.00 A.M"),
+    NotificationModel("Force Touches website", "Last update at 10.00 A.M"),
+    // NotificationModel(
+    //     "Force Touches website has been broken down, Please check it ASAP",
+    //     "Last update at 10.00 A.M"),
+    // NotificationModel(
+    //     "Force Touches website has been broken down, Please check it ASAP",
+    //     "Last update at 10.00 A.M"),
+    // NotificationModel(
+    //     "Force Touches website has been broken down, Please check it ASAP",
+    //     "Last update at 10.00 A.M"),
+    // NotificationModel(
+    //     "Force Touches website has been broken down, Please check it ASAP",
+    //     "Last update at 10.00 A.M"),
+    // NotificationModel(
+    //     "Force Touches website has been broken down, Please check it ASAP",
+    //     "Last update at 10.00 A.M"),
+    // NotificationModel(
+    //     "Force Touches website has been broken down, Please check it ASAP",
+    //     "Last update at 10.00 A.M"),
+    // NotificationModel(
+    //     "Force Touches website has been broken down, Please check it ASAP",
+    //     "Last update at 10.00 A.M"),
+    // NotificationModel(
+    //     "Force Touches website has been broken down, Please check it ASAP",
+    //     "Last update at 10.00 A.M"),
   ];
 
   @override
@@ -57,7 +51,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         ),
         body: ListView.separated(
             padding: const EdgeInsets.all(8),
-            separatorBuilder: (context, index){
+            separatorBuilder: (context, index) {
               return Divider(
                 color: const Color(0x309e9e9e),
                 thickness: 1,
@@ -74,6 +68,26 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                       child: Icon(
                         Icons.notifications,
                         color: const Color(0xFFFEC200),
+                      )),
+                  Padding(
+                      padding: EdgeInsets.only(left: 8),
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            '${notifications[index].title}',
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w500),
+                          ),
+                          Text(
+                            '${notifications[index].time}',
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w400),
+                          ),
+                        ],
                       )),
                 ],
               );
