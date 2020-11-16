@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'bottom_nav_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  //static final String route = "/login";
   static Route<dynamic> route() => MaterialPageRoute(
         builder: (context) => LoginScreen(),
       );

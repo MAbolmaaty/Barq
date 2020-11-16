@@ -29,13 +29,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Container(
                         alignment: Alignment.center,
                         child: CircleAvatar(
-                          child: Image.asset(
-                            'assets/profile.png',
-                            height: 60,
-                            width: 60,
-                          ),
-                          backgroundColor: const Color(0x409e9e9e),
                           radius: 50,
+                          backgroundColor: const Color(0x109e9e9e),
+                          child: CircleAvatar(
+                              radius: 52,
+                              backgroundColor: const Color(0x109e9e9e),
+                              backgroundImage: AssetImage(
+                                'assets/profile.png',
+                              )),
                         )),
                     SizedBox(
                       height: 20,
