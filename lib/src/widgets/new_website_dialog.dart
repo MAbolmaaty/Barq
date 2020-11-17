@@ -253,68 +253,6 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                               });
                             },
                           ))),
-
-                  // Expanded(
-                  //     child: Row(
-                  //   mainAxisAlignment: MainAxisAlignment.center,
-                  //   children: <Widget>[
-                  //     Padding(
-                  //       padding: const EdgeInsets.all(10.0),
-                  //       child: ButtonTheme(
-                  //           height: 35.0,
-                  //           minWidth: 110.0,
-                  //           child: RaisedButton(
-                  //             color: Colors.yellow,
-                  //             shape: RoundedRectangleBorder(
-                  //                 borderRadius: BorderRadius.circular(5.0)),
-                  //             splashColor: Colors.white.withAlpha(40),
-                  //             child: Text(
-                  //               'Logout',
-                  //               textAlign: TextAlign.center,
-                  //               style: TextStyle(
-                  //                   color: Colors.green,
-                  //                   fontWeight: FontWeight.bold,
-                  //                   fontSize: 13.0),
-                  //             ),
-                  //             onPressed: () {
-                  //               setState(() {
-                  //                 Route route = MaterialPageRoute(
-                  //                     builder: (context) => LoginScreen());
-                  //                 Navigator.pushReplacement(context, route);
-                  //               });
-                  //             },
-                  //           )),
-                  //     ),
-                  //     Padding(
-                  //         padding: const EdgeInsets.only(
-                  //             left: 20.0, right: 10.0, top: 10.0, bottom: 10.0),
-                  //         child: ButtonTheme(
-                  //             height: 35.0,
-                  //             minWidth: 110.0,
-                  //             child: RaisedButton(
-                  //               color: Colors.yellow,
-                  //               shape: RoundedRectangleBorder(
-                  //                   borderRadius: BorderRadius.circular(5.0)),
-                  //               splashColor: Colors.white.withAlpha(40),
-                  //               child: Text(
-                  //                 'Cancel',
-                  //                 textAlign: TextAlign.center,
-                  //                 style: TextStyle(
-                  //                     color: Colors.green,
-                  //                     fontWeight: FontWeight.bold,
-                  //                     fontSize: 13.0),
-                  //               ),
-                  //               onPressed: () {
-                  //                 setState(() {
-                  //                   /* Route route = MaterialPageRoute(
-                  //                         builder: (context) => LoginScreen());
-                  //                     Navigator.pushReplacement(context, route);
-                  //                  */
-                  //                 });
-                  //               },
-                  //             ))),
-                  //   ],
-                  // ))
                 ],
               )),
         ),

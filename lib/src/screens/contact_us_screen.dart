@@ -97,7 +97,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
               color: const Color(0xffFEC200)),
           child: Text(
             'Send',
-            style: TextStyle(fontSize: 20, color: Colors.white),
+            style: TextStyle(fontSize: 15, color: Colors.white),
           ),
         ));
   }

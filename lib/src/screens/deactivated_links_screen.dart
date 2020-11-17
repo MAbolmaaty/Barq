@@ -1,3 +1,4 @@
+import 'package:barq/src/screens/website_details_screen.dart';
 import 'package:flutter/material.dart';
 
 class DeactivatedLinksScreen extends StatefulWidget {
@@ -29,7 +30,10 @@ class _DeactivatedLinksScreen extends State<DeactivatedLinksScreen> {
           padding: const EdgeInsets.all(8),
           itemCount: websiteNames.length,
           itemBuilder: (BuildContext context, int index) {
-            return Container(
+            return GestureDetector(onTap: (){
+              Navigator.of(context)
+                  .push(WebsiteDetailsScreen.route());
+            },child:Container(
               margin: const EdgeInsets.all(8),
               child: Row(
                 children: <Widget>[
@@ -45,7 +49,7 @@ class _DeactivatedLinksScreen extends State<DeactivatedLinksScreen> {
                       ))
                 ],
               ),
-            );
+            ));
           }),
     );
   }

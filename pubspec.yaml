@@ -28,6 +28,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_swiper: ^1.1.6
 
 
 # For information on the generic Dart part of this file, see the
@@ -45,6 +46,9 @@ flutter:
   assets:
     - assets/profile.png
     - assets/barq_logo.png
+    - assets/coffee1.jpg
+    - assets/coffee2.jpg
+    - assets/coffee3.jpg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

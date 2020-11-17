@@ -1,3 +1,4 @@
+import 'package:barq/src/screens/forget_password_screen.dart';
 import 'package:barq/src/screens/register_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -119,7 +120,12 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget _forgetPassword() {
-    return Container(
+    return GestureDetector(
+      onTap: (){
+        Navigator.of(context).push(
+            ForgetPasswordScreen.route());
+      },
+        child: Container(
       margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Text(
         'Forget Password ?',
@@ -128,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
             fontWeight: FontWeight.w500,
             color: const Color(0xFF9e9e9e)),
       ),
-    );
+    ));
   }
 
   Widget _registerLabel() {
