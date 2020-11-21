@@ -57,12 +57,12 @@ class _MainScreenState extends State<MainScreen> {
       ),
       appBar: AppBar(
         backgroundColor: const Color(0xFF333333),
-        title: Text("Main"),
+        title: Center(child:Text("Main", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),)),
         actions: <Widget>[
           IconButton(
               icon: Icon(
                 Icons.logout,
-                color: Colors.yellow,
+                color: const Color(0xffFEC200),
               ),
               onPressed: () {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(

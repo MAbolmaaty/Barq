@@ -18,35 +18,36 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    return SafeArea(
-        child: Scaffold(
-      body: SingleChildScrollView(
-          child: Column(
-        children: [
-          SizedBox(
-            height: height * .1,
-          ),
-          _title(),
-          SizedBox(
-            height: height * .1,
-          ),
-          _emailField(),
-          _passwordField(),
-          SizedBox(
-            height: 20,
-          ),
-          _loginButton(),
-          SizedBox(
-            height: 60,
-          ),
-          _forgetPassword(),
-          SizedBox(
-            height: 80,
-          ),
-          _registerLabel(),
-        ],
-      )),
-    ));
+    return SafeArea(child: Scaffold(body: LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints viewPortConstraints) {
+        return SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: viewPortConstraints.maxHeight
+              ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    SizedBox(
+                      height: height * .1,
+                    ),
+                    _title(),
+                    SizedBox(
+                      height: height * .1,
+                    ),
+                    _entryField(title: 'E-mail'),
+                    _entryField(title: 'Password', isPassword: true),
+                    _loginButton(),
+                    _forgetPassword(),
+                    SizedBox(
+                      height: height * .1,
+                    ),
+                    _registerLabel(),
+                  ],
+                )));
+      },
+    )));
   }
 
   Widget _title() {
@@ -61,84 +62,73 @@ class _LoginScreenState extends State<LoginScreen> {
         ));
   }
 
-  Widget _emailField() {
+  Widget _entryField(
+      {String title, bool isPassword = false, int maxLines = 1}) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: TextField(
+        maxLines: maxLines,
+        obscureText: isPassword,
         decoration: InputDecoration(
-          hintText: 'E-mail',
-          hintStyle: TextStyle(color: const Color(0xFF9e9e9e)),
-          border: InputBorder.none,
-          fillColor: Color(0xfff3f3f4),
-          filled: true,
-        ),
-      ),
-    );
-  }
-
-  Widget _passwordField() {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: TextField(
-        obscureText: true,
-        decoration: InputDecoration(
-          hintText: 'Password',
-          hintStyle: TextStyle(color: const Color(0xFF9e9e9e)),
-          border: InputBorder.none,
-          fillColor: Color(0xfff3f3f4),
-          filled: true,
-        ),
+            labelText: title,
+            hintStyle: TextStyle(
+              color: const Color(0xFF9e9e9e),
+              fontSize: 12,
+            ),
+            alignLabelWithHint: true,
+            border: OutlineInputBorder(),
+            isDense: true),
       ),
     );
   }
 
   Widget _loginButton() {
     return InkWell(
-      onTap: () {
-        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => BottomNavScreen()));
-      },
+        onTap: () {
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (BuildContext context) => BottomNavScreen()));
+        },
         child: Container(
-      width: MediaQuery.of(context).size.width,
-      height: 40,
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(5)),
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-                color: Colors.grey.shade200,
-                offset: Offset(2, 4),
-                blurRadius: 5,
-                spreadRadius: 2)
-          ],
-          color: Colors.orange),
-      child: Text(
-        'Login',
-        style: TextStyle(fontSize: 20, color: Colors.white),
-      ),
-    ));
+          width: MediaQuery.of(context).size.width,
+          height: 50,
+          margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(5)),
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                    color: const Color(0x709e9e9e),
+                    offset: Offset(1, 2),
+                    blurRadius: 5,
+                    spreadRadius: 1)
+              ],
+              color: const Color(0xffFEC200)),
+          child: Text(
+            'Login',
+            style: TextStyle(fontSize: 17, color: Colors.white),
+          ),
+        ));
   }
 
   Widget _forgetPassword() {
     return GestureDetector(
-      onTap: (){
-        Navigator.of(context).push(
-            ForgetPasswordScreen.route());
-      },
+        onTap: () {
+          Navigator.of(context).push(ForgetPasswordScreen.route());
+        },
         child: Container(
-      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      child: Text(
-        'Forget Password ?',
-        style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-            color: const Color(0xFF9e9e9e)),
-      ),
-    ));
+          margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          child: Text(
+            'Forget Password ?',
+            style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: const Color(0xFF9e9e9e)),
+          ),
+        ));
   }
 
   Widget _registerLabel() {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
           RegisterScreen.route(),
