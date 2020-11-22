@@ -62,9 +62,10 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                     GestureDetector(
                         onTap: () => {
                               setState(() {
-                                Route route = MaterialPageRoute(
-                                    builder: (context) => BottomNavScreen());
-                                Navigator.pushReplacement(context, route);
+                                // Route route = MaterialPageRoute(
+                                //     builder: (context) => BottomNavScreen());
+                                // Navigator.pushReplacement(context, route);
+                                Navigator.pop(context);
                               })
                             },
                         child: Align(

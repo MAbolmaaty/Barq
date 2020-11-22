@@ -130,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _registerLabel() {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
+        Navigator.of(context).pushReplacement(
           RegisterScreen.route(),
         );
       },

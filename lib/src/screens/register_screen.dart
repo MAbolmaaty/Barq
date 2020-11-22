@@ -43,11 +43,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
             SizedBox(
               height: 20,
             ),
-            _entryField('Full Name'),
-            _entryField('E-mail'),
-            _entryField('Password', isPassword: true),
-            _entryField('Confirm Password', isPassword: true),
-            _entryField('Phone  Number'),
+            _entryField(title: 'Full Name'),
+            _entryField(title: 'E-mail'),
+            _entryField(title: 'Password', isPassword: true),
+            _entryField(title: 'Confirm Password', isPassword: true),
+            _entryField(title: 'Phone  Number'),
             SizedBox(
               height: 20,
             ),
@@ -63,18 +63,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
     //     child: Text('I already have account ... Login')),
   }
 
-  Widget _entryField(String title, {bool isPassword = false}) {
+  Widget _entryField(
+      {String title, bool isPassword = false, int maxLines = 1}) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: TextField(
+        maxLines: maxLines,
         obscureText: isPassword,
         decoration: InputDecoration(
-          hintText: title,
-          hintStyle: TextStyle(color: const Color(0xFF9e9e9e), fontSize: 14),
-          border: InputBorder.none,
-          fillColor: Color(0xfff3f3f4),
-          filled: true,
-        ),
+            labelText: title,
+            hintStyle: TextStyle(
+              color: const Color(0xFF9e9e9e),
+              fontSize: 12,
+            ),
+            alignLabelWithHint: true,
+            border: OutlineInputBorder(),
+            isDense: true),
       ),
     );
   }
@@ -89,12 +93,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
           borderRadius: BorderRadius.all(Radius.circular(5)),
           boxShadow: <BoxShadow>[
             BoxShadow(
-                color: Colors.grey.shade200,
-                offset: Offset(2, 4),
+                color: const Color(0x709e9e9e),
+                offset: Offset(1, 2),
                 blurRadius: 5,
-                spreadRadius: 2)
+                spreadRadius: 1)
           ],
-          color: Colors.orange),
+          color: const Color(0xffFEC200)),
       child: Text(
         'Register',
         style: TextStyle(fontSize: 16, color: Colors.white),
@@ -103,9 +107,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   Widget _loginLabel() {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
+        Navigator.of(context).pushReplacement(
           LoginScreen.route(),
         );
       },
