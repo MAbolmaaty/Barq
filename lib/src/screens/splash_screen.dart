@@ -9,12 +9,13 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3),
-        () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (BuildContext context) => BottomNavScreen())));
+    Timer(
+        Duration(seconds: 3),
+        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (BuildContext context) => BottomNavScreen())));
   }
 
   @override
@@ -28,8 +29,8 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Container(
                     margin: const EdgeInsets.all(56.0),
                     child: CircularProgressIndicator(
-                        valueColor:
-                            new AlwaysStoppedAnimation<Color>(const Color(0xffFEC200))))),
+                        valueColor: new AlwaysStoppedAnimation<Color>(
+                            const Color(0xffFEC200))))),
             Align(
               alignment: Alignment.center,
               child: Image.asset(

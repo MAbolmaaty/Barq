@@ -2,7 +2,7 @@ import 'package:barq/src/screens/forget_password_screen.dart';
 import 'package:barq/src/screens/register_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'bottom_nav_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -22,9 +22,8 @@ class _LoginScreenState extends State<LoginScreen> {
       builder: (BuildContext context, BoxConstraints viewPortConstraints) {
         return SingleChildScrollView(
             child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: viewPortConstraints.maxHeight
-              ),
+                constraints:
+                    BoxConstraints(minHeight: viewPortConstraints.maxHeight),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -36,8 +35,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(
                       height: height * .1,
                     ),
-                    _entryField(title: 'E-mail'),
-                    _entryField(title: 'Password', isPassword: true),
+                    _entryField(title: AppLocalizations.of(context).email),
+                    _entryField(title: AppLocalizations.of(context).password, isPassword: true),
                     _loginButton(),
                     _forgetPassword(),
                     SizedBox(
@@ -54,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return RichText(
         textAlign: TextAlign.center,
         text: TextSpan(
-          text: 'Login',
+          text: AppLocalizations.of(context).login,
           style: TextStyle(
               fontSize: 30.0,
               fontWeight: FontWeight.bold,
@@ -104,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
               color: const Color(0xffFEC200)),
           child: Text(
-            'Login',
+            AppLocalizations.of(context).login,
             style: TextStyle(fontSize: 17, color: Colors.white),
           ),
         ));
@@ -118,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Container(
           margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
           child: Text(
-            'Forget Password ?',
+            AppLocalizations.of(context).forgetPassword,
             style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
@@ -130,23 +129,22 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _registerLabel() {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushReplacement(
-          RegisterScreen.route(),
-        );
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (BuildContext context) => RegisterScreen()));
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 20),
         child: Row(
           children: <Widget>[
             Text(
-              'Don\'t have an account ? .. ',
+              AppLocalizations.of(context).dontHaveAccount,
               style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
                   color: const Color(0xFF9e9e9e)),
             ),
             Text(
-              'Register',
+              AppLocalizations.of(context).register,
               style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,

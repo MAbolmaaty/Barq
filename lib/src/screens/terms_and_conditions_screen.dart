@@ -1,4 +1,6 @@
+import 'package:barq/src/widgets/screen_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TermsAndConditionsScreen extends StatefulWidget {
   static Route<dynamic> route() => MaterialPageRoute(
@@ -16,8 +18,9 @@ class _TermsAndConditionsState extends State<TermsAndConditionsScreen> {
         child: Scaffold(
             appBar: AppBar(
               backgroundColor: const Color(0xFF333333),
-              title: Text("Terms And Conditions"),
-              textTheme: TextTheme(headline6: TextStyle(color: Colors.white)),
+              actions: [
+                ScreenAppBar(screenTitle: AppLocalizations.of(context).termsAndConditions, implyLeading: true),
+              ],
             ),
             body: SingleChildScrollView(
                 child: Column(children: [

@@ -1,5 +1,10 @@
+import 'dart:async';
+
+import 'package:barq/src/screens/bottom_nav_screen.dart';
+import 'package:barq/src/widgets/success_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'login_screen.dart';
 
@@ -43,11 +48,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
             SizedBox(
               height: 20,
             ),
-            _entryField(title: 'Full Name'),
-            _entryField(title: 'E-mail'),
-            _entryField(title: 'Password', isPassword: true),
-            _entryField(title: 'Confirm Password', isPassword: true),
-            _entryField(title: 'Phone  Number'),
+            _entryField(title: AppLocalizations.of(context).fullName),
+            _entryField(title: AppLocalizations.of(context).email),
+            _entryField(
+                title: AppLocalizations.of(context).password, isPassword: true),
+            _entryField(
+                title: AppLocalizations.of(context).confirmPassword,
+                isPassword: true),
+            _entryField(title: AppLocalizations.of(context).phoneNumber),
             SizedBox(
               height: 20,
             ),
@@ -84,26 +92,40 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   Widget _registerButton() {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: 40,
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(5)),
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-                color: const Color(0x709e9e9e),
-                offset: Offset(1, 2),
-                blurRadius: 5,
-                spreadRadius: 1)
-          ],
-          color: const Color(0xffFEC200)),
-      child: Text(
-        'Register',
-        style: TextStyle(fontSize: 16, color: Colors.white),
-      ),
-    );
+    return GestureDetector(
+        onTap: () {
+          showDialog(
+              context: context,
+              builder: (_) => SuccessDialog(
+                    message:
+                        AppLocalizations.of(context).accountSuccessfullyCreated,
+                  ));
+          Timer(Duration(seconds: 1), () {
+            Navigator.pop(context);
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (BuildContext context) => BottomNavScreen()));
+          });
+        },
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: 40,
+          margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(5)),
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                    color: const Color(0x709e9e9e),
+                    offset: Offset(1, 2),
+                    blurRadius: 5,
+                    spreadRadius: 1)
+              ],
+              color: const Color(0xffFEC200)),
+          child: Text(
+            AppLocalizations.of(context).createNewAccount,
+            style: TextStyle(fontSize: 16, color: Colors.white),
+          ),
+        ));
   }
 
   Widget _loginLabel() {
@@ -116,7 +138,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 20),
         child: Text(
-          'Already have an account ? .. Login',
+          AppLocalizations.of(context).alreadyHaveAccount +
+              AppLocalizations.of(context).login,
           style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w500,
@@ -128,14 +151,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   Widget _registerLabel() {
     return Container(
-        margin: EdgeInsets.symmetric(vertical: 20),
-        child: Text(
-          'New Account',
-          style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-              color: const Color(0xff212121)),
-        ),
+      margin: EdgeInsets.symmetric(vertical: 20),
+      child: Text(
+        AppLocalizations.of(context).newAccount,
+        style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w500,
+            color: const Color(0xff212121)),
+      ),
     );
   }
 }

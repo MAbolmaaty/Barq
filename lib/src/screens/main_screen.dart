@@ -3,6 +3,7 @@ import 'package:barq/src/screens/all_links_screen.dart';
 import 'package:barq/src/screens/deactivated_links_screen.dart';
 import 'package:barq/src/widgets/new_website_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'login_screen.dart';
 
@@ -36,9 +37,9 @@ class _MainScreenState extends State<MainScreen> {
                   labelColor: Colors.orange,
                   indicatorColor: Colors.orange,
                   tabs: [
-                    Tab(text: "All"),
-                    Tab(text: "Active"),
-                    Tab(text: "Deactivated")
+                    Tab(text: AppLocalizations.of(context).all),
+                    Tab(text: AppLocalizations.of(context).activated),
+                    Tab(text: AppLocalizations.of(context).deactivated)
                   ],
                 ),
               ),
@@ -57,7 +58,7 @@ class _MainScreenState extends State<MainScreen> {
       ),
       appBar: AppBar(
         backgroundColor: const Color(0xFF333333),
-        title: Center(child:Text("Main", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),)),
+        title: Center(child:Text(AppLocalizations.of(context).main, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),)),
         actions: <Widget>[
           IconButton(
               icon: Icon(

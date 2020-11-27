@@ -1,5 +1,6 @@
 import 'package:barq/src/screens/bottom_nav_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NewWebsiteDialog extends StatefulWidget {
   @override
@@ -37,7 +38,6 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
           child: Container(
               margin: EdgeInsets.all(20.0),
               padding: EdgeInsets.all(15.0),
-              //height: 180.0,
               decoration: ShapeDecoration(
                   color: Colors.white,
                   shape: RoundedRectangleBorder(
@@ -50,7 +50,7 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                       child: Padding(
                         padding: const EdgeInsets.only(top: 10.0),
                         child: Text(
-                          "New Website",
+                          AppLocalizations.of(context).newWebsite,
                           style: TextStyle(
                               color: const Color(0xff212121),
                               fontSize: 16.0,
@@ -83,14 +83,14 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                     indent: 5,
                     endIndent: 5,
                   ),
-                  _entryField('Website Name'),
-                  _entryField('Website Link'),
+                  _entryField(title: AppLocalizations.of(context).websiteName),
+                  _entryField(title: AppLocalizations.of(context).websiteLink),
                   SizedBox(
                     height: 30,
                   ),
                   Align(
                     child: Text(
-                      "Website will be checked every",
+                      AppLocalizations.of(context).websiteWillBeCheckedEvery,
                       style: TextStyle(
                           color: const Color(0xaa9e9e9e),
                           fontSize: 12.0,
@@ -110,7 +110,11 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                           child: Padding(
                         padding: EdgeInsets.all(8),
                         child: Container(
-                          color: const Color(0x309e9e9e),
+                          decoration: ShapeDecoration(
+                              color: const Color(0x309e9e9e),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(4),
+                              )),
                           child: Padding(
                               padding: EdgeInsets.all(8),
                               child: Wrap(
@@ -127,7 +131,7 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                                               fontWeight: FontWeight.w500),
                                         ),
                                         Text(
-                                          "Minutes",
+                                          AppLocalizations.of(context).minutes,
                                           style: TextStyle(
                                               color: const Color(0xff212121),
                                               fontSize: 16.0,
@@ -138,7 +142,12 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                                     Column(
                                       children: <Widget>[
                                         Container(
-                                          color: const Color(0xffFEC200),
+                                          decoration: ShapeDecoration(
+                                              color: const Color(0xffFEC200),
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          4))),
                                           child: Padding(
                                             padding: EdgeInsets.all(4),
                                             child: Icon(Icons.arrow_drop_up),
@@ -150,7 +159,12 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                                               height: 1,
                                             )),
                                         Container(
-                                          color: const Color(0xffFEC200),
+                                          decoration: ShapeDecoration(
+                                              color: const Color(0xffFEC200),
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          4))),
                                           child: Padding(
                                             padding: EdgeInsets.all(4),
                                             child: Icon(Icons.arrow_drop_down),
@@ -167,7 +181,10 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                           child: Padding(
                         padding: EdgeInsets.all(8),
                         child: Container(
-                          color: const Color(0x309e9e9e),
+                          decoration: ShapeDecoration(
+                              color: const Color(0x309e9e9e),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(4))),
                           child: Padding(
                               padding: EdgeInsets.all(8),
                               child: Wrap(
@@ -184,7 +201,7 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                                               fontWeight: FontWeight.w500),
                                         ),
                                         Text(
-                                          "Hours",
+                                          AppLocalizations.of(context).hours,
                                           style: TextStyle(
                                               color: const Color(0xff212121),
                                               fontSize: 16.0,
@@ -195,7 +212,12 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                                     Column(
                                       children: <Widget>[
                                         Container(
-                                          color: const Color(0xffFEC200),
+                                          decoration: ShapeDecoration(
+                                              color: const Color(0xffFEC200),
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          4))),
                                           child: Padding(
                                             padding: EdgeInsets.all(4),
                                             child: Icon(Icons.arrow_drop_up),
@@ -207,7 +229,12 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                                               height: 1,
                                             )),
                                         Container(
-                                          color: const Color(0xffFEC200),
+                                          decoration: ShapeDecoration(
+                                              color: const Color(0xffFEC200),
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          4))),
                                           child: Padding(
                                             padding: EdgeInsets.all(4),
                                             child: Icon(Icons.arrow_drop_down),
@@ -239,11 +266,11 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                                 borderRadius: BorderRadius.circular(5.0)),
                             splashColor: Colors.white.withAlpha(40),
                             child: Text(
-                              'Create',
+                              AppLocalizations.of(context).create,
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: const Color(0xff212121),
-                                  fontWeight: FontWeight.bold,
+                                  fontWeight: FontWeight.w500,
                                   fontSize: 13.0),
                             ),
                             onPressed: () {
@@ -261,17 +288,22 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
     );
   }
 
-  Widget _entryField(String title) {
+  Widget _entryField(
+      {String title, bool isPassword = false, int maxLines = 1}) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       child: TextField(
+        maxLines: maxLines,
+        obscureText: isPassword,
         decoration: InputDecoration(
-          hintText: title,
-          hintStyle: TextStyle(color: const Color(0xFF9e9e9e), fontSize: 14),
-          border: InputBorder.none,
-          fillColor: Color(0xfff3f3f4),
-          filled: true,
-        ),
+            labelText: title,
+            labelStyle: TextStyle(
+              color: const Color(0xFF9e9e9e),
+              fontSize: 14,
+            ),
+            alignLabelWithHint: true,
+            border: OutlineInputBorder(),
+            isDense: true),
       ),
     );
   }

@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 
-class RegisterSuccessDialog extends StatefulWidget {
+class SuccessDialog extends StatefulWidget {
+  String _message;
+
+  SuccessDialog({String message}){
+    this._message = message;
+  }
+
   @override
-  _RegisterSuccessDialogState createState() => _RegisterSuccessDialogState();
+  _SuccessDialogState createState() => _SuccessDialogState();
 }
 
-class _RegisterSuccessDialogState extends State<RegisterSuccessDialog>
+class _SuccessDialogState extends State<SuccessDialog>
     with SingleTickerProviderStateMixin {
   AnimationController controller;
   Animation<double> scaleAnimation;
@@ -29,7 +35,12 @@ class _RegisterSuccessDialogState extends State<RegisterSuccessDialog>
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      content: Text('Successfully created new account'),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      content: Row(children: [
+        Expanded(child: Text('${widget._message}',
+        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 13),)),
+        Icon(Icons.check, color: const Color(0xffFEC200),)
+      ]),
     );
   }
 }

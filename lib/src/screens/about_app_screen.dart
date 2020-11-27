@@ -1,6 +1,8 @@
+import 'package:barq/src/widgets/screen_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AboutAppScreen extends StatefulWidget {
   static Route<dynamic> route() => MaterialPageRoute(
@@ -30,8 +32,7 @@ class _AboutAppState extends State<AboutAppScreen> {
         child: Scaffold(
             appBar: AppBar(
               backgroundColor: const Color(0xFF333333),
-              title: Text("About App"),
-              textTheme: TextTheme(headline6: TextStyle(color: Colors.white)),
+              actions: [ScreenAppBar(screenTitle: AppLocalizations.of(context).aboutApp, implyLeading: true,)],
             ),
             body: SingleChildScrollView(
                 child: Column(children: [

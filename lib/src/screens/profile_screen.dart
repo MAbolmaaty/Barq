@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileScreen extends StatefulWidget {
   static Route<dynamic> route() => MaterialPageRoute(
@@ -16,7 +17,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Scaffold(
             appBar: AppBar(
               backgroundColor: const Color(0xFF333333),
-              title: Text("Profile"),
+              //title: Center(child: Text("Profile")),
+              actions: [
+                Expanded(
+                    child: Stack(children: [
+                  Align(
+                      alignment: Alignment.centerRight,
+                      child: Padding(padding: EdgeInsets.all(8),child: Image.asset(
+                        'assets/edit.png',
+                        width: 20,
+                        height: 20,
+                      ))),
+                  Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        AppLocalizations.of(context).profile,
+                        style: TextStyle(color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16),
+                      ))
+                ]))
+              ],
               textTheme: TextTheme(headline6: TextStyle(color: Colors.white)),
             ),
             body: SingleChildScrollView(
@@ -41,10 +62,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(
                       height: 20,
                     ),
-                    _entryField('Full Name'),
-                    _entryField('E-mail'),
-                    _entryField('Password', isPassword: true),
-                    _entryField('Phone  Number'),
+                    _entryField(AppLocalizations.of(context).fullName),
+                    _entryField(AppLocalizations.of(context).email),
+                    //_entryField('Password', isPassword: true),
+                    _entryField(AppLocalizations.of(context).phoneNumber),
                     SizedBox(
                       height: 20,
                     ),
@@ -54,7 +75,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             )));
   }
 
-  Widget _entryField(String title, {bool isPassword = false}){
+  Widget _entryField(String title, {bool isPassword = false}) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: TextField(

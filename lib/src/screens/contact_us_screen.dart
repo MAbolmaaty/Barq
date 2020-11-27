@@ -1,6 +1,8 @@
 import 'dart:ui';
 
+import 'package:barq/src/widgets/screen_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ContactUsScreen extends StatefulWidget {
   static Route<dynamic> route() => MaterialPageRoute(
@@ -18,7 +20,10 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
         child: Scaffold(
             appBar: AppBar(
               backgroundColor: const Color(0xFF333333),
-              title: Text("Contact Us"),
+              actions: [
+                ScreenAppBar(screenTitle: AppLocalizations.of(context).contactUs,implyLeading: true),
+              ],
+              automaticallyImplyLeading: false,
               textTheme: TextTheme(headline6: TextStyle(color: Colors.white)),
             ),
             body: SingleChildScrollView(
@@ -29,7 +34,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                       child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            "Contact Us",
+                            AppLocalizations.of(context).contactUs,
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
@@ -40,7 +45,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                       child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            "We will be happy to be contacted with you",
+                            AppLocalizations.of(context).contactUsHint,
                             style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400,
@@ -49,10 +54,10 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                   SizedBox(
                     height: 24,
                   ),
-                  _entryField(title: 'Full Name'),
-                  _entryField(title: 'E-mail'),
-                  _entryField(title: 'Phone  Number'),
-                  _entryField(title: 'Message Subject', maxLines: 10),
+                  _entryField(title: AppLocalizations.of(context).fullName),
+                  _entryField(title: AppLocalizations.of(context).email),
+                  _entryField(title: AppLocalizations.of(context).phoneNumber),
+                  _entryField(title: AppLocalizations.of(context).messageSubject, maxLines: 10),
                   _sendButton(),
                 ],
               ),
@@ -67,19 +72,21 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
         maxLines: maxLines,
         obscureText: isPassword,
         decoration: InputDecoration(
-          labelText: title,
-          hintStyle: TextStyle(color: const Color(0xFF9e9e9e), fontSize: 14,),alignLabelWithHint: true,
-          border: OutlineInputBorder(),
-          isDense: true
-        ),
+            labelText: title,
+            hintStyle: TextStyle(
+              color: const Color(0xFF9e9e9e),
+              fontSize: 14,
+            ),
+            alignLabelWithHint: true,
+            border: OutlineInputBorder(),
+            isDense: true),
       ),
     );
   }
 
   Widget _sendButton() {
     return InkWell(
-        onTap: () {
-        },
+        onTap: () {},
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: 40,
@@ -96,7 +103,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
               ],
               color: const Color(0xffFEC200)),
           child: Text(
-            'Send',
+            AppLocalizations.of(context).send,
             style: TextStyle(fontSize: 15, color: Colors.white),
           ),
         ));

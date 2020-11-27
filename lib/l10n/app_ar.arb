@@ -1,0 +1,195 @@
+{
+  "@@locale": "ar",
+  "main": "الرئيسية",
+  "@main": {
+    "description": ""
+  },
+  "all": "الكل",
+  "@all": {
+    "description": ""
+  },
+  "activated": "المفعلة",
+  "@activated": {
+    "description": ""
+  },
+  "deactivated": "المعطلة",
+  "@deactivated": {
+    "description": ""
+  },
+  "login": "تسجيل الدخول",
+  "@login": {
+    "description": ""
+  },
+  "email": "البريد الإلكتروني",
+  "@email": {
+    "description": ""
+  },
+  "password": "كلمة المرور",
+  "@password": {
+    "description": ""
+  },
+  "confirmPassword": "تأكيد كلمة المرور",
+  "@confirmPassword": {
+    "description": ""
+  },
+  "rememberMe": "تذكرني لاحقا",
+  "@rememberMe": {
+    "description": ""
+  },
+  "forgetPassword": "هل نسيت كلمة المرور؟",
+  "@forgetPassword": {
+    "description": ""
+  },
+  "dontHaveAccount": "ليس لدي حساب .. ",
+  "@dontHaveAccount": {
+    "description": ""
+  },
+  "register": "إنشاء حساب جديد",
+  "@register": {
+    "description": ""
+  },
+  "createNewAccount": "إنشاء حساب جديد",
+  "@createNewAccount": {
+    "description": ""
+  },
+  "newAccount": "حساب جديد",
+  "@newAccount": {
+    "description": ""
+  },
+  "fullName": "الأسم بالكامل",
+  "@fullName": {
+    "description": ""
+  },
+  "phoneNumber": "الجوال",
+  "@phoneNumber": {
+    "description": ""
+  },
+  "alreadyHaveAccount": "لدي حساب بالفعل .. ",
+  "@alreadyHaveAccount": {
+    "description": ""
+  },
+  "accountSuccessfullyCreated": "تم إنشاء حسابك بنجاح.",
+  "@accountSuccessfullyCreated": {
+    "description": ""
+  },
+  "newWebsite": "موقع جديد",
+  "@newWebsite": {
+    "description": ""
+  },
+  "websiteName": "اسم الموقع",
+  "@websiteName": {
+    "description": ""
+  },
+  "websiteLink": "رابط الموقع",
+  "@websiteLink": {
+    "description": ""
+  },
+  "websiteWillBeCheckedEvery": "يتم فحص الموقع كل",
+  "@websiteWillBeCheckedEvery": {
+    "description": ""
+  },
+  "minutes": "دقيقة",
+  "@minutes": {
+    "description": ""
+  },
+  "hours": "ساعة",
+  "@hours": {
+    "description": ""
+  },
+  "create": "إنشاء",
+  "@create": {
+    "description": ""
+  },
+  "notifications": "الاشعارات",
+  "@notifications": {
+    "description": ""
+  },
+  "profile": "حسابي",
+  "@profile": {
+    "description": ""
+  },
+  "settings": "الاعدادات",
+  "@settings": {
+    "description": ""
+  },
+  "language": "اللغة",
+  "@language": {
+    "description": ""
+  },
+  "arabic": "العربية",
+  "@arabic": {
+    "description": ""
+  },
+  "english": "English",
+  "@english": {
+    "description": ""
+  },
+  "aboutApp": "عن التطبيق",
+  "@aboutApp": {
+    "description": ""
+  },
+  "termsAndConditions": "الشروط و الأحكام",
+  "@termsAndConditions": {
+    "description": ""
+  },
+  "contactUs": "تواصل معانا",
+  "@contactUs": {
+    "description": ""
+  },
+  "contactUsHint": "نحن سعداء بتواصلك معنا.",
+  "@contactUsHint": {
+    "description": ""
+  },
+  "messageSubject": "موضوع الرسالة",
+  "@messageSubject": {
+    "description": ""
+  },
+  "send": "إرسال",
+  "@send": {
+    "description": ""
+  },
+  "resetPassword": "استعادة كلمة المرور",
+  "@resetPassword": {
+    "description": ""
+  },
+  "resetPasswordHint": "سيتم إرسال كود على بريدك الإلكتروني",
+  "@resetPasswordHint": {
+    "description": ""
+  },
+  "tryAgain": "أريد المحاولة مرة أخرى .. ",
+  "@tryAgain": {
+    "description": ""
+  },
+  "codeSuccessfullySent": "تم إرسال الكود على بريدك الإلكتروني بنجاح.",
+  "@codeSuccessfullySent": {
+    "description": ""
+  },
+  "resetContinue": "لاستكمال العملية أدخل كلمة المرور الجديدة",
+  "@resetContinue": {
+    "description": ""
+  },
+  "enterNewPassword": "كلمة المرور الجديدة",
+  "@enterNewPassword": {
+    "description": ""
+  },
+  "reEnterNewPassword": "غعادة كلمة المرور الجديدة",
+  "@reEnterNewPassword": {
+    "description": ""
+  },
+  "confirm": "تأكيد",
+  "@confirm": {
+    "description": ""
+  },
+  "passwordChanged": "تم تعين كلمة المرور الجديدة بنجاح.",
+  "@passwordChanged": {
+    "description": ""
+  },
+  "lastNotifications": "الاشعارات الاخيرة",
+  "@lastNotifications": {
+    "description": ""
+  },
+  "showAll": "إظهار الكل",
+  "@showAll": {
+    "description": ""
+  }
+}
