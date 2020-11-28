@@ -1,4 +1,4 @@
-import 'package:barq/app_locale.dart';
+import 'file:///C:/MU/barq/lib/src/utils/localization/app_locale.dart';
 import 'package:barq/src/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

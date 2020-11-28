@@ -1,4 +1,4 @@
-import 'package:barq/app_locale.dart';
+import 'file:///C:/MU/barq/lib/src/utils/localization/app_locale.dart';
 import 'package:barq/src/screens/about_app_screen.dart';
 import 'package:barq/src/screens/contact_us_screen.dart';
 import 'package:barq/src/screens/terms_and_conditions_screen.dart';
