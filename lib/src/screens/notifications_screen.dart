@@ -1,4 +1,5 @@
 import 'package:barq/src/models/notification_model.dart';
+import 'package:barq/src/widgets/screen_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -48,8 +49,14 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: const Color(0xFF333333),
-          title: Text(AppLocalizations.of(context).notifications),
-          textTheme: TextTheme(headline6: TextStyle(color: Colors.white)),
+          //title: Text(AppLocalizations.of(context).notifications),
+          //textTheme: TextTheme(headline6: TextStyle(color: Colors.white)),
+          actions: [
+            ScreenAppBar(
+              screenTitle: AppLocalizations.of(context).notifications,
+              implyLeading: false,
+            )
+          ],
         ),
         body: ListView.separated(
             padding: const EdgeInsets.all(8),
@@ -79,20 +86,24 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                               Container(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                '${notifications[index].title}',
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w500),
-                              )),
+                                    '${notifications[index].title}',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w500,
+                                      fontFamily: 'Cairo',
+                                    ),
+                                  )),
                               Container(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
                                     '${notifications[index].time}',
                                     style: TextStyle(
-                                        fontSize: 12,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w400),
+                                      fontSize: 12,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w400,
+                                      fontFamily: 'Cairo',
+                                    ),
                                   )),
                             ],
                           ))),

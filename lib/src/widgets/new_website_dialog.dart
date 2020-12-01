@@ -54,7 +54,7 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                           style: TextStyle(
                               color: const Color(0xff212121),
                               fontSize: 16.0,
-                              fontWeight: FontWeight.w500),
+                              fontWeight: FontWeight.w500, fontFamily: 'Cairo'),
                         ),
                       ),
                       alignment: Alignment.topLeft,
@@ -94,7 +94,7 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                       style: TextStyle(
                           color: const Color(0xaa9e9e9e),
                           fontSize: 12.0,
-                          fontWeight: FontWeight.w400),
+                          fontWeight: FontWeight.w400,fontFamily: 'Cairo',),
                     ),
                     alignment: Alignment.centerLeft,
                   ),
@@ -128,14 +128,14 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                                           style: TextStyle(
                                               color: const Color(0xff212121),
                                               fontSize: 36.0,
-                                              fontWeight: FontWeight.w500),
+                                              fontWeight: FontWeight.w500,fontFamily: 'Cairo'),
                                         ),
                                         Text(
                                           AppLocalizations.of(context).minutes,
                                           style: TextStyle(
                                               color: const Color(0xff212121),
                                               fontSize: 16.0,
-                                              fontWeight: FontWeight.w500),
+                                              fontWeight: FontWeight.w500,fontFamily: 'Cairo'),
                                         ),
                                       ],
                                     )),
@@ -198,14 +198,14 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                                           style: TextStyle(
                                               color: const Color(0xff212121),
                                               fontSize: 36.0,
-                                              fontWeight: FontWeight.w500),
+                                              fontWeight: FontWeight.w500,fontFamily: 'Cairo',),
                                         ),
                                         Text(
                                           AppLocalizations.of(context).hours,
                                           style: TextStyle(
                                               color: const Color(0xff212121),
                                               fontSize: 16.0,
-                                              fontWeight: FontWeight.w500),
+                                              fontWeight: FontWeight.w500,fontFamily: 'Cairo',),
                                         ),
                                       ],
                                     )),
@@ -271,7 +271,7 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                               style: TextStyle(
                                   color: const Color(0xff212121),
                                   fontWeight: FontWeight.w500,
-                                  fontSize: 13.0),
+                                  fontSize: 13.0, fontFamily: 'Cairo',),
                             ),
                             onPressed: () {
                               setState(() {
@@ -299,7 +299,8 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
             labelText: title,
             labelStyle: TextStyle(
               color: const Color(0xFF9e9e9e),
-              fontSize: 14,
+              fontSize: 13,
+              fontFamily: 'Cairo',
             ),
             alignLabelWithHint: true,
             border: OutlineInputBorder(),

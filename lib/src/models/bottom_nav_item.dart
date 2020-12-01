@@ -14,7 +14,7 @@ class BottomNavItem{
     BottomNavItem(screen : MainScreen(), title : 'Main'),
     BottomNavItem(screen : NotificationsScreen(), title : 'Notifications'),
     BottomNavItem(screen : ProfileScreen(), title : 'Profile'),
-    BottomNavItem(screen : SettingsSecreen(), title : 'Settings'),
+    BottomNavItem(screen : SettingsScreen(), title : 'Settings'),
   ];
 }
 

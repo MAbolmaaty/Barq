@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'file:///C:/MU/barq/lib/src/utils/localization/app_locale.dart';
+import 'package:provider/provider.dart';
 
 class ScreenAppBar extends StatelessWidget {
   bool _implyLeading;
   String _screenTitle;
   GestureDetector _thirdAction;
 
-
-  ScreenAppBar({screenTitle = "", implyLeading = false, GestureDetector thirdAction}) {
+  ScreenAppBar(
+      {screenTitle = "", implyLeading = false, GestureDetector thirdAction}) {
     this._implyLeading = implyLeading;
     this._screenTitle = screenTitle;
     this._thirdAction = thirdAction;
@@ -14,12 +16,13 @@ class ScreenAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var locale = Provider.of<AppLocale>(context);
     return Expanded(
         child: Stack(children: [
       Visibility(
           visible: _implyLeading,
           child: Align(
-              alignment: Alignment.centerLeft,
+              alignment: locale.locale == Locale('en') ? Alignment.centerLeft : Alignment.centerRight,
               child: GestureDetector(
                   onTap: () => Navigator.of(context).pop(),
                   child: Container(
@@ -36,17 +39,10 @@ class ScreenAppBar extends StatelessWidget {
         child: Text(
           _screenTitle,
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.w500, fontSize: 16),
+              color: Colors.white, fontWeight: FontWeight.w500, fontSize: 16, fontFamily: 'Cairo'),
         ),
       ),
-      Align(
-        alignment: Alignment.centerRight,
-        child: _thirdAction
-
-        // GestureDetector(child:Container(
-        //     height: double.infinity,
-        //     child: Padding(padding: EdgeInsets.all(15), child: _thirdAction))),
-      )
+      Align(alignment: locale.locale == Locale('en') ? Alignment.centerRight : Alignment.centerLeft, child: _thirdAction,)
     ]));
   }
 }

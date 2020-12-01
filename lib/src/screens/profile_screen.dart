@@ -1,3 +1,4 @@
+import 'package:barq/src/widgets/screen_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -17,26 +18,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Scaffold(
             appBar: AppBar(
               backgroundColor: const Color(0xFF333333),
-              //title: Center(child: Text("Profile")),
               actions: [
-                Expanded(
-                    child: Stack(children: [
-                  Align(
-                      alignment: Alignment.centerRight,
-                      child: Padding(padding: EdgeInsets.all(8),child: Image.asset(
-                        'assets/edit.png',
-                        width: 20,
-                        height: 20,
-                      ))),
-                  Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        AppLocalizations.of(context).profile,
-                        style: TextStyle(color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16),
-                      ))
-                ]))
+                ScreenAppBar(
+                  screenTitle: AppLocalizations.of(context).profile,
+                  implyLeading: false,
+                  thirdAction: GestureDetector(
+                      child: Container(
+                    height: double.infinity,
+                    child: Padding(
+                        padding: EdgeInsets.all(15),
+                        child: Image.asset(
+                          'assets/edit.png',
+                          width: 20,
+                          height: 20,
+                        )),
+                  )),
+                )
               ],
               textTheme: TextTheme(headline6: TextStyle(color: Colors.white)),
             ),

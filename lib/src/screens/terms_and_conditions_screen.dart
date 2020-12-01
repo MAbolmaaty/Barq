@@ -19,7 +19,10 @@ class _TermsAndConditionsState extends State<TermsAndConditionsScreen> {
             appBar: AppBar(
               backgroundColor: const Color(0xFF333333),
               actions: [
-                ScreenAppBar(screenTitle: AppLocalizations.of(context).termsAndConditions, implyLeading: true),
+                ScreenAppBar(
+                    screenTitle:
+                        AppLocalizations.of(context).termsAndConditions,
+                    implyLeading: true),
               ],
             ),
             body: SingleChildScrollView(
@@ -31,21 +34,25 @@ class _TermsAndConditionsState extends State<TermsAndConditionsScreen> {
                       child: Text(
                         "Terms And Conditions",
                         style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                          fontFamily: 'Cairo',
+                        ),
                       ))),
-                  Padding(
-                      padding: EdgeInsets.only(left: 16, top: 8),
-                      child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            "Barq App Terms And Conditions.\n@Force Touches 2020",
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xFF9e9e9e)),
-                          ))),
+              Padding(
+                  padding: EdgeInsets.only(left: 16, top: 8),
+                  child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Barq App Terms And Conditions.\n@Force Touches 2020",
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: const Color(0xFF9e9e9e),
+                          fontFamily: 'Cairo',
+                        ),
+                      ))),
             ]))));
   }
 }

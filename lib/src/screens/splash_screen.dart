@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:barq/src/screens/bottom_nav_screen.dart';
 import 'package:flutter/material.dart';
+import 'file:///C:/MU/barq/lib/src/utils/localization/app_locale.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   @override

@@ -21,7 +21,9 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
             appBar: AppBar(
               backgroundColor: const Color(0xFF333333),
               actions: [
-                ScreenAppBar(screenTitle: AppLocalizations.of(context).contactUs,implyLeading: true),
+                ScreenAppBar(
+                    screenTitle: AppLocalizations.of(context).contactUs,
+                    implyLeading: true),
               ],
               automaticallyImplyLeading: false,
               textTheme: TextTheme(headline6: TextStyle(color: Colors.white)),
@@ -38,7 +40,8 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                             style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
-                                color: Colors.black),
+                                color: Colors.black,
+                                fontFamily: 'Cairo'),
                           ))),
                   Padding(
                       padding: EdgeInsets.only(left: 16, top: 8),
@@ -49,7 +52,8 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                             style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w400,
-                                color: const Color(0xFF9e9e9e)),
+                                color: const Color(0xFF9e9e9e),
+                                fontFamily: 'Cairo'),
                           ))),
                   SizedBox(
                     height: 24,
@@ -57,7 +61,9 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                   _entryField(title: AppLocalizations.of(context).fullName),
                   _entryField(title: AppLocalizations.of(context).email),
                   _entryField(title: AppLocalizations.of(context).phoneNumber),
-                  _entryField(title: AppLocalizations.of(context).messageSubject, maxLines: 10),
+                  _entryField(
+                      title: AppLocalizations.of(context).messageSubject,
+                      maxLines: 10),
                   _sendButton(),
                 ],
               ),
@@ -73,10 +79,10 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
         obscureText: isPassword,
         decoration: InputDecoration(
             labelText: title,
-            hintStyle: TextStyle(
-              color: const Color(0xFF9e9e9e),
-              fontSize: 14,
-            ),
+            labelStyle: TextStyle(
+                color: const Color(0xFF9e9e9e),
+                fontSize: 13,
+                fontFamily: 'Cairo'),
             alignLabelWithHint: true,
             border: OutlineInputBorder(),
             isDense: true),
@@ -85,7 +91,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
   }
 
   Widget _sendButton() {
-    return InkWell(
+    return GestureDetector(
         onTap: () {},
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -104,7 +110,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
               color: const Color(0xffFEC200)),
           child: Text(
             AppLocalizations.of(context).send,
-            style: TextStyle(fontSize: 15, color: Colors.white),
+            style: TextStyle(fontSize: 15, color: Colors.white, fontFamily: 'Cairo'),
           ),
         ));
   }

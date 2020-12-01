@@ -80,9 +80,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
         obscureText: isPassword,
         decoration: InputDecoration(
             labelText: title,
-            hintStyle: TextStyle(
+            labelStyle: TextStyle(
               color: const Color(0xFF9e9e9e),
-              fontSize: 12,
+              fontSize: 13,
+              fontFamily: 'Cairo'
             ),
             alignLabelWithHint: true,
             border: OutlineInputBorder(),
@@ -123,7 +124,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               color: const Color(0xffFEC200)),
           child: Text(
             AppLocalizations.of(context).createNewAccount,
-            style: TextStyle(fontSize: 16, color: Colors.white),
+            style: TextStyle(fontSize: 16, color: Colors.white, fontFamily: 'Cairo'),
           ),
         ));
   }
@@ -143,7 +144,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w500,
-              color: const Color(0xFF9e9e9e)),
+              color: const Color(0xFF9e9e9e), fontFamily: 'Cairo'),
         ),
       ),
     );
@@ -157,7 +158,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w500,
-            color: const Color(0xff212121)),
+            color: const Color(0xff212121), fontFamily: 'Cairo'),
       ),
     );
   }

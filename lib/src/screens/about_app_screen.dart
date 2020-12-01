@@ -1,8 +1,8 @@
 import 'package:barq/src/widgets/screen_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 
 class AboutAppScreen extends StatefulWidget {
   static Route<dynamic> route() => MaterialPageRoute(
@@ -32,7 +32,12 @@ class _AboutAppState extends State<AboutAppScreen> {
         child: Scaffold(
             appBar: AppBar(
               backgroundColor: const Color(0xFF333333),
-              actions: [ScreenAppBar(screenTitle: AppLocalizations.of(context).aboutApp, implyLeading: true,)],
+              actions: [
+                ScreenAppBar(
+                  screenTitle: AppLocalizations.of(context).aboutApp,
+                  implyLeading: true,
+                )
+              ],
             ),
             body: SingleChildScrollView(
                 child: Column(children: [
@@ -44,9 +49,11 @@ class _AboutAppState extends State<AboutAppScreen> {
                         "About Barq App.\n@Force Touches 2020",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xFF9e9e9e)),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: const Color(0xFF9e9e9e),
+                          fontFamily: 'Cairo',
+                        ),
                       ))),
               Container(
                 constraints: BoxConstraints.expand(height: 200),
@@ -71,9 +78,11 @@ class _AboutAppState extends State<AboutAppScreen> {
                               'Website',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 10.0),
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 10.0,
+                                fontFamily: 'Cairo',
+                              ),
                             ),
                             onPressed: () {},
                           ),
@@ -93,9 +102,11 @@ class _AboutAppState extends State<AboutAppScreen> {
                           'App Store',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 10.0),
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 10.0,
+                            fontFamily: 'Cairo',
+                          ),
                         ),
                         onPressed: () {},
                       ),
@@ -115,9 +126,11 @@ class _AboutAppState extends State<AboutAppScreen> {
                           'Google Play',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 10.0),
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 10.0,
+                            fontFamily: 'Cairo',
+                          ),
                         ),
                         onPressed: () {},
                       ),
@@ -133,9 +146,11 @@ class _AboutAppState extends State<AboutAppScreen> {
                         "Developed By Force Touches Inc.\n@All rights reserved 2020",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xff212121)),
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: const Color(0xff212121),
+                          fontFamily: 'Cairo',
+                        ),
                       ))),
             ]))));
   }

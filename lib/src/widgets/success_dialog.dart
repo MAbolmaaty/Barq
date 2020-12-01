@@ -38,7 +38,7 @@ class _SuccessDialogState extends State<SuccessDialog>
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       content: Row(children: [
         Expanded(child: Text('${widget._message}',
-        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 13),)),
+        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 13, fontFamily: 'Cairo'),)),
         Icon(Icons.check, color: const Color(0xffFEC200),)
       ]),
     );

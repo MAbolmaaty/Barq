@@ -3,6 +3,7 @@ import 'package:barq/src/screens/register_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'bottom_nav_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -36,7 +37,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: height * .1,
                     ),
                     _entryField(title: AppLocalizations.of(context).email),
-                    _entryField(title: AppLocalizations.of(context).password, isPassword: true),
+                    _entryField(
+                        title: AppLocalizations.of(context).password,
+                        isPassword: true),
                     _loginButton(),
                     _forgetPassword(),
                     SizedBox(
@@ -57,7 +60,8 @@ class _LoginScreenState extends State<LoginScreen> {
           style: TextStyle(
               fontSize: 30.0,
               fontWeight: FontWeight.bold,
-              color: const Color(0xFF333333)),
+              color: const Color(0xFF333333),
+              fontFamily: 'Cairo'),
         ));
   }
 
@@ -70,10 +74,10 @@ class _LoginScreenState extends State<LoginScreen> {
         obscureText: isPassword,
         decoration: InputDecoration(
             labelText: title,
-            hintStyle: TextStyle(
-              color: const Color(0xFF9e9e9e),
-              fontSize: 12,
-            ),
+            labelStyle: TextStyle(
+                color: const Color(0xFF9e9e9e),
+                fontSize: 13,
+                fontFamily: 'Cairo'),
             alignLabelWithHint: true,
             border: OutlineInputBorder(),
             isDense: true),
@@ -104,7 +108,8 @@ class _LoginScreenState extends State<LoginScreen> {
               color: const Color(0xffFEC200)),
           child: Text(
             AppLocalizations.of(context).login,
-            style: TextStyle(fontSize: 17, color: Colors.white),
+            style: TextStyle(
+                fontSize: 17, color: Colors.white, fontFamily: "Cairo"),
           ),
         ));
   }
@@ -121,7 +126,8 @@ class _LoginScreenState extends State<LoginScreen> {
             style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
-                color: const Color(0xFF9e9e9e)),
+                color: const Color(0xFF9e9e9e),
+                fontFamily: "Cairo"),
           ),
         ));
   }
@@ -141,14 +147,16 @@ class _LoginScreenState extends State<LoginScreen> {
               style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
-                  color: const Color(0xFF9e9e9e)),
+                  color: const Color(0xFF9e9e9e),
+                  fontFamily: "Cairo"),
             ),
             Text(
               AppLocalizations.of(context).register,
               style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
-                  color: Colors.orange),
+                  color: Colors.orange,
+                  fontFamily: "Cairo"),
             ),
           ],
           mainAxisAlignment: MainAxisAlignment.center,

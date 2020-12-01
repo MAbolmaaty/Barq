@@ -1,24 +1,26 @@
-import 'file:///C:/MU/barq/lib/src/utils/localization/app_locale.dart';
 import 'package:barq/src/screens/about_app_screen.dart';
 import 'package:barq/src/screens/contact_us_screen.dart';
 import 'package:barq/src/screens/terms_and_conditions_screen.dart';
+import 'package:barq/src/widgets/screen_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
-class SettingsSecreen extends StatefulWidget {
+import 'file:///C:/MU/barq/lib/src/utils/localization/app_locale.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class SettingsScreen extends StatefulWidget {
   static Route<dynamic> route() => MaterialPageRoute(
-        builder: (context) => SettingsSecreen(),
+        builder: (context) => SettingsScreen(),
       );
 
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
 }
 
-class _SettingsScreenState extends State<SettingsSecreen> {
+class _SettingsScreenState extends State<SettingsScreen> {
   bool isVisible = false;
-  int language = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +28,12 @@ class _SettingsScreenState extends State<SettingsSecreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF333333),
-        title: Text(AppLocalizations.of(context).settings),
-        textTheme: TextTheme(headline6: TextStyle(color: Colors.white)),
+        actions: [
+          ScreenAppBar(
+            screenTitle: AppLocalizations.of(context).settings,
+            implyLeading: false,
+          )
+        ],
       ),
       body: Column(
         children: <Widget>[
@@ -42,17 +48,18 @@ class _SettingsScreenState extends State<SettingsSecreen> {
                 color: const Color(0x309e9e9e),
                 child: Stack(children: <Widget>[
                   Align(
-                    alignment: Alignment.centerLeft,
+                    alignment: locale.locale == Locale('en') ? Alignment.centerLeft : Alignment.centerRight,
                     child: Text(
                       AppLocalizations.of(context).language,
                       style: TextStyle(
                           fontSize: 14,
                           color: Colors.black,
-                          fontWeight: FontWeight.w500),
+                          fontWeight: FontWeight.w500,
+                      fontFamily: 'Cairo',),
                     ),
                   ),
                   Align(
-                      alignment: Alignment.centerRight,
+                      alignment: locale.locale == Locale('en') ? Alignment.centerRight : Alignment.centerLeft,
                       child: Icon(
                         Icons.arrow_right,
                         color: const Color(0xee9e9e9e),
@@ -63,8 +70,8 @@ class _SettingsScreenState extends State<SettingsSecreen> {
               visible: isVisible,
               child: GestureDetector(
                   onTap: () => setState(() {
-                        language = 0;
                         locale.changeLocale(Locale('ar'));
+                        setValue('ar');
                       }),
                   child: Container(
                     height: 60,
@@ -73,24 +80,24 @@ class _SettingsScreenState extends State<SettingsSecreen> {
                       children: [
                         Align(
                           child: Padding(
-                              padding: EdgeInsets.only(left: 25),
-                              child: language == 0
+                              padding: EdgeInsets.only(left: 25, right: 25),
+                              child: locale.locale == Locale('ar')
                                   ? Text(
-                                AppLocalizations.of(context).arabic,
+                                      AppLocalizations.of(context).arabic,
                                       style: TextStyle(
-                                          color: const Color(0xffFEC200)),
+                                          color: const Color(0xffFEC200),fontFamily: 'Cairo',),
                                     )
                                   : Text(
-                                AppLocalizations.of(context).arabic,
+                                      AppLocalizations.of(context).arabic,
                                       style: TextStyle(
-                                          color: const Color(0xff9e9e9e)),
+                                          color: const Color(0xff9e9e9e),fontFamily: 'Cairo',),
                                     )),
-                          alignment: Alignment.centerLeft,
+                          alignment: locale.locale == Locale('en') ? Alignment.centerLeft : Alignment.centerRight,
                         ),
                         Align(
                           child: Padding(
-                              padding: EdgeInsets.only(right: 25),
-                              child: language == 0
+                              padding: EdgeInsets.only(right: 25, left: 25),
+                              child: locale.locale == Locale('ar')
                                   ? Icon(
                                       Icons.check_circle,
                                       color: const Color(0xffFEC200),
@@ -99,7 +106,7 @@ class _SettingsScreenState extends State<SettingsSecreen> {
                                       Icons.check_circle,
                                       color: const Color(0x809e9e9e),
                                     )),
-                          alignment: Alignment.centerRight,
+                          alignment: locale.locale == Locale('en') ? Alignment.centerRight : Alignment.centerLeft,
                         )
                       ],
                     ),
@@ -108,8 +115,8 @@ class _SettingsScreenState extends State<SettingsSecreen> {
               visible: isVisible,
               child: GestureDetector(
                   onTap: () => setState(() {
-                        language = 1;
                         locale.changeLocale(Locale('en'));
+                        setValue('en');
                       }),
                   child: Container(
                     height: 60,
@@ -118,22 +125,22 @@ class _SettingsScreenState extends State<SettingsSecreen> {
                       children: [
                         Align(
                           child: Padding(
-                              padding: EdgeInsets.only(left: 25),
-                              child: language == 1
+                              padding: EdgeInsets.only(left: 25, right: 25),
+                              child: locale.locale == Locale('en')
                                   ? Text(
-                                AppLocalizations.of(context).english,
+                                      AppLocalizations.of(context).english,
                                       style: TextStyle(
-                                          color: const Color(0xffFEC200)),
+                                          color: const Color(0xffFEC200), fontFamily: 'Cairo',),
                                     )
                                   : Text(AppLocalizations.of(context).english,
                                       style: TextStyle(
-                                          color: const Color(0xff9e9e9e)))),
-                          alignment: Alignment.centerLeft,
+                                          color: const Color(0xff9e9e9e), fontFamily: 'Cairo',))),
+                          alignment: locale.locale == Locale('en') ? Alignment.centerLeft : Alignment.centerRight,
                         ),
                         Align(
                           child: Padding(
-                              padding: EdgeInsets.only(right: 25),
-                              child: language == 1
+                              padding: EdgeInsets.only(right: 25, left: 25),
+                              child: locale.locale == Locale('en')
                                   ? Icon(
                                       Icons.check_circle,
                                       color: const Color(0xffFEC200),
@@ -142,7 +149,7 @@ class _SettingsScreenState extends State<SettingsSecreen> {
                                       Icons.check_circle,
                                       color: const Color(0x809e9e9e),
                                     )),
-                          alignment: Alignment.centerRight,
+                          alignment: locale.locale == Locale('en') ? Alignment.centerRight : Alignment.centerLeft,
                         )
                       ],
                     ),
@@ -158,17 +165,18 @@ class _SettingsScreenState extends State<SettingsSecreen> {
                 color: const Color(0x309e9e9e),
                 child: Stack(children: <Widget>[
                   Align(
-                    alignment: Alignment.centerLeft,
+                    alignment: locale.locale == Locale('en') ? Alignment.centerLeft : Alignment.centerRight,
                     child: Text(
                       AppLocalizations.of(context).aboutApp,
                       style: TextStyle(
                           fontSize: 14,
                           color: Colors.black,
-                          fontWeight: FontWeight.w500),
+                          fontWeight: FontWeight.w500,
+                        fontFamily: 'Cairo',),
                     ),
                   ),
                   Align(
-                      alignment: Alignment.centerRight,
+                      alignment: locale.locale == Locale('en') ? Alignment.centerRight : Alignment.centerLeft,
                       child: Icon(
                         Icons.arrow_right,
                         color: const Color(0xee9e9e9e),
@@ -186,17 +194,18 @@ class _SettingsScreenState extends State<SettingsSecreen> {
                 color: const Color(0x309e9e9e),
                 child: Stack(children: <Widget>[
                   Align(
-                    alignment: Alignment.centerLeft,
+                    alignment: locale.locale == Locale('en') ? Alignment.centerLeft : Alignment.centerRight,
                     child: Text(
                       AppLocalizations.of(context).termsAndConditions,
                       style: TextStyle(
                           fontSize: 14,
                           color: Colors.black,
-                          fontWeight: FontWeight.w500),
+                          fontWeight: FontWeight.w500,
+                        fontFamily: 'Cairo',),
                     ),
                   ),
                   Align(
-                      alignment: Alignment.centerRight,
+                      alignment: locale.locale == Locale('en') ? Alignment.centerRight : Alignment.centerLeft,
                       child: Icon(
                         Icons.arrow_right,
                         color: const Color(0xee9e9e9e),
@@ -214,17 +223,18 @@ class _SettingsScreenState extends State<SettingsSecreen> {
               padding: EdgeInsets.only(left: 25, right: 25),
               child: Stack(children: <Widget>[
                 Align(
-                  alignment: Alignment.centerLeft,
+                  alignment: locale.locale == Locale('en') ? Alignment.centerLeft : Alignment.centerRight,
                   child: Text(
                     AppLocalizations.of(context).contactUs,
                     style: TextStyle(
                         fontSize: 14,
                         color: Colors.black,
-                        fontWeight: FontWeight.w500),
+                        fontWeight: FontWeight.w500,
+                      fontFamily: 'Cairo',),
                   ),
                 ),
                 Align(
-                    alignment: Alignment.centerRight,
+                    alignment: locale.locale == Locale('en') ? Alignment.centerRight : Alignment.centerLeft,
                     child: Icon(
                       Icons.arrow_right,
                       color: const Color(0xee9e9e9e),
@@ -235,5 +245,10 @@ class _SettingsScreenState extends State<SettingsSecreen> {
         ],
       ),
     );
+  }
+
+  setValue(String lang) async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('Locale', lang);
   }
 }
