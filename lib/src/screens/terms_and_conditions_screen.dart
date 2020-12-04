@@ -17,7 +17,6 @@ class _TermsAndConditionsState extends State<TermsAndConditionsScreen> {
     return SafeArea(
         child: Scaffold(
             appBar: AppBar(
-              backgroundColor: const Color(0xFF333333),
               actions: [
                 ScreenAppBar(
                     screenTitle:

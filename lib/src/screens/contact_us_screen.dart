@@ -19,14 +19,12 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
     return SafeArea(
         child: Scaffold(
             appBar: AppBar(
-              backgroundColor: const Color(0xFF333333),
               actions: [
                 ScreenAppBar(
                     screenTitle: AppLocalizations.of(context).contactUs,
                     implyLeading: true),
               ],
               automaticallyImplyLeading: false,
-              textTheme: TextTheme(headline6: TextStyle(color: Colors.white)),
             ),
             body: SingleChildScrollView(
               child: Column(

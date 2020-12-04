@@ -27,7 +27,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
     var locale = Provider.of<AppLocale>(context);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF333333),
         actions: [
           ScreenAppBar(
             screenTitle: AppLocalizations.of(context).settings,

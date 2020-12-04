@@ -48,9 +48,6 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color(0xFF333333),
-          //title: Text(AppLocalizations.of(context).notifications),
-          //textTheme: TextTheme(headline6: TextStyle(color: Colors.white)),
           actions: [
             ScreenAppBar(
               screenTitle: AppLocalizations.of(context).notifications,

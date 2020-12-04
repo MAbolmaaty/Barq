@@ -30,7 +30,6 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     var locale = Provider.of<AppLocale>(context);
-    //getValue(context);
     return Scaffold(
       body: DefaultTabController(
         length: 3,
@@ -66,7 +65,6 @@ class _MainScreenState extends State<MainScreen> {
         ),
       ),
       appBar: AppBar(
-        backgroundColor: const Color(0xFF333333),
         actions: [
           ScreenAppBar(
             screenTitle: AppLocalizations.of(context).main,
@@ -89,7 +87,6 @@ class _MainScreenState extends State<MainScreen> {
                     ))),
           ),
         ],
-        textTheme: TextTheme(headline6: TextStyle(color: Colors.white)),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),

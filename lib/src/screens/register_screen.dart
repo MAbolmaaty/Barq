@@ -65,10 +65,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
       ),
     ));
-
-    // FlatButton(
-    //     onPressed: () => Navigator.of(context).push(LoginScreen.route()),
-    //     child: Text('I already have account ... Login')),
   }
 
   Widget _entryField(

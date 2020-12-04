@@ -17,7 +17,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return SafeArea(
         child: Scaffold(
             appBar: AppBar(
-              backgroundColor: const Color(0xFF333333),
               actions: [
                 ScreenAppBar(
                   screenTitle: AppLocalizations.of(context).profile,
@@ -35,7 +34,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   )),
                 )
               ],
-              textTheme: TextTheme(headline6: TextStyle(color: Colors.white)),
             ),
             body: SingleChildScrollView(
               child: Center(

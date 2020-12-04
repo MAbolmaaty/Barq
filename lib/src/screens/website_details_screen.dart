@@ -60,7 +60,6 @@ class _WebsiteDetailsScreenState extends State<WebsiteDetailsScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color(0xff212121),
           actions: [
             ScreenAppBar(
               screenTitle: "Website Name",

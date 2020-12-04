@@ -31,7 +31,6 @@ class _AboutAppState extends State<AboutAppScreen> {
     return SafeArea(
         child: Scaffold(
             appBar: AppBar(
-              backgroundColor: const Color(0xFF333333),
               actions: [
                 ScreenAppBar(
                   screenTitle: AppLocalizations.of(context).aboutApp,
