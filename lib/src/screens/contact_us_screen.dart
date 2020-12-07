@@ -56,7 +56,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                   SizedBox(
                     height: 24,
                   ),
-                  _entryField(title: AppLocalizations.of(context).fullName),
+                  _entryField(title: AppLocalizations.of(context).username),
                   _entryField(title: AppLocalizations.of(context).email),
                   _entryField(title: AppLocalizations.of(context).phoneNumber),
                   _entryField(

@@ -11,6 +11,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences.getInstance().then((instance) {
     String lang = instance.getString('Locale');
+    if(lang == null) lang = 'en';
     runApp(App(lang));
   });
 }
@@ -35,7 +36,7 @@ class _AppState extends State<App> {
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           locale: locale.locale,
-          theme: ThemeData(primaryColor: const Color(0xFF333333)),
+          theme: ThemeData(primaryColor: const Color(0xFF333333),fontFamily: 'Cairo'),
           home: SplashScreen(),
         );
       }),

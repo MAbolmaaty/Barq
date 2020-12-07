@@ -1,5 +1,6 @@
 {
   "@@locale": "ar",
+
   "main": "الرئيسية",
   "@main": {
     "description": ""
@@ -56,8 +57,8 @@
   "@newAccount": {
     "description": ""
   },
-  "fullName": "الأسم بالكامل",
-  "@fullName": {
+  "username": "اسم المستخدم",
+  "@username": {
     "description": ""
   },
   "phoneNumber": "الجوال",
@@ -190,6 +191,30 @@
   },
   "showAll": "إظهار الكل",
   "@showAll": {
+    "description": ""
+  },
+  "addWebsite": "إضغط على الزر أسفل الشاشة لاضافة موقع جديد",
+  "@addWebsite": {
+    "description": ""
+  },
+  "pleaseEnterUsername": "من فضلك ادخل اسم المستخدم",
+  "@pleaseEnterUsername": {
+    "description": ""
+  },
+  "pleaseEnterEmail": "من فضلك ادخل البريد الالكتروني",
+  "@pleaseEnterEmail": {
+    "description": ""
+  },
+  "pleaseEnterPassword": "من فضلك ادخل كلمة المرور",
+  "@pleaseEnterPassword": {
+    "description": ""
+  },
+  "pleaseConfirmPassword": "من فضلك اعد كتابة كلمة المرور",
+  "@pleaseConfirmPassword": {
+    "description": ""
+  },
+  "pleaseEnterPhoneNumber": "من فضلك ادخل رقم الهاتف",
+  "@pleaseEnterPhoneNumber": {
     "description": ""
   }
 }

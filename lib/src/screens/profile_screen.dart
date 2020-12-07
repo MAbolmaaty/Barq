@@ -57,7 +57,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(
                       height: 20,
                     ),
-                    _entryField(AppLocalizations.of(context).fullName),
+                    _entryField(AppLocalizations.of(context).username),
                     _entryField(AppLocalizations.of(context).email),
                     //_entryField('Password', isPassword: true),
                     _entryField(AppLocalizations.of(context).phoneNumber),

@@ -1,5 +1,6 @@
 {
   "@@locale": "en",
+
   "main": "Main",
   "@main": {
     "description": ""
@@ -56,8 +57,8 @@
   "@newAccount": {
     "description": ""
   },
-  "fullName": "Full Name",
-  "@fullName": {
+  "username": "Username",
+  "@username": {
     "description": ""
   },
   "phoneNumber": "Phone Number",
@@ -190,6 +191,30 @@
   },
   "showAll": "Show All",
   "@showAll": {
+    "description": ""
+  },
+  "addWebsite": "Press the floating action button to add new website",
+  "@addWebsite": {
+    "description": ""
+  },
+  "pleaseEnterUsername": "Please enter username",
+  "@pleaseEnterUsername": {
+    "description": ""
+  },
+  "pleaseEnterEmail": "Please enter email",
+  "@pleaseEnterEmail": {
+    "description": ""
+  },
+  "pleaseEnterPassword": "Please enter password",
+  "@pleaseEnterPassword": {
+    "description": ""
+  },
+  "pleaseConfirmPassword": "Please confirm password",
+  "@pleaseConfirmPassword": {
+    "description": ""
+  },
+  "pleaseEnterPhoneNumber": "Please enter phone number",
+  "@pleaseEnterPhoneNumber": {
     "description": ""
   }
 }
