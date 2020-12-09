@@ -216,5 +216,17 @@
   "pleaseEnterPhoneNumber": "من فضلك ادخل رقم الهاتف",
   "@pleaseEnterPhoneNumber": {
     "description": ""
+  },
+  "registering": "جاري التسجيل ... من فضلك انتظر",
+  "@registering": {
+    "description": ""
+  },
+  "registrationFailed": "فشل التسجيل",
+  "@registrationFailed": {
+    "description": ""
+  },
+  "passwordsDoNotMatch": "كلمة المرور غير متطابقة",
+  "@passwordsDoNotMatch": {
+    "description": ""
   }
 }

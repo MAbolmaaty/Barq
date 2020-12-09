@@ -1,6 +1,13 @@
+import 'dart:async';
+
+import 'package:barq/src/utils/networking/auth_provider.dart';
+import 'package:barq/src/widgets/success_dialog.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
+import 'bottom_nav_screen.dart';
 import 'login_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -20,182 +27,262 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-      body: SingleChildScrollView(
-        child: Form(
-            key: formKey,
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 40,
-                ),
-                _registerLabel(),
-                SizedBox(
-                  height: 40,
-                ),
-                Container(
-                    alignment: Alignment.center,
-                    child: CircleAvatar(
-                      radius: 50,
-                      backgroundColor: const Color(0x109e9e9e),
-                      child: CircleAvatar(
-                          radius: 52,
-                          backgroundColor: const Color(0x109e9e9e),
-                          backgroundImage: AssetImage(
-                            'assets/profile.png',
+    return ChangeNotifierProvider(
+      create: (context) => AuthProvider(),
+      child: Consumer<AuthProvider>(
+        builder: (context, authProvider, child) {
+          return SafeArea(
+              child: Scaffold(
+            body: SingleChildScrollView(
+              child: Form(
+                  key: formKey,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 40,
+                      ),
+                      _registerLabel(),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Container(
+                          alignment: Alignment.center,
+                          child: CircleAvatar(
+                            radius: 50,
+                            backgroundColor: const Color(0x109e9e9e),
+                            child: CircleAvatar(
+                                radius: 52,
+                                backgroundColor: const Color(0x109e9e9e),
+                                backgroundImage: AssetImage(
+                                  'assets/profile.png',
+                                )),
                           )),
-                    )),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                  child: TextFormField(
-                    maxLines: 1,
-                    validator: (value) =>
-                        value.isEmpty ? AppLocalizations.of(context).pleaseEnterUsername : null,
-                    onSaved: (value) => _username = value,
-                    decoration: InputDecoration(
-                      contentPadding: EdgeInsets.only(top: 11, bottom: 11, left: 8, right: 8),
-                        labelText: AppLocalizations.of(context).username,
-                        labelStyle: TextStyle(
-                            color: const Color(0xFF9e9e9e),
-                            fontSize: 13,
-                            fontFamily: 'Cairo'),
-                        alignLabelWithHint: true,
-                        border: OutlineInputBorder(),
-                        isDense: true),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                  child: TextFormField(
-                    maxLines: 1,
-                    validator: (value) =>
-                    value.isEmpty ? AppLocalizations.of(context).pleaseEnterEmail : null,
-                    onSaved: (value) => _email = value,
-                    decoration: InputDecoration(
-                        labelText: AppLocalizations.of(context).email,
-                        labelStyle: TextStyle(
-                            color: const Color(0xFF9e9e9e),
-                            fontSize: 13,
-                            fontFamily: 'Cairo'),
-                        alignLabelWithHint: true,
-                        border: OutlineInputBorder(),
-                        isDense: true),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                  child: TextFormField(
-                    maxLines: 1,
-                    validator: (value) =>
-                    value.isEmpty ? AppLocalizations.of(context).pleaseEnterPassword : null,
-                    onSaved: (value) => _password = value,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        labelText: AppLocalizations.of(context).password,
-                        labelStyle: TextStyle(
-                            color: const Color(0xFF9e9e9e),
-                            fontSize: 13,
-                            fontFamily: 'Cairo'),
-                        alignLabelWithHint: true,
-                        border: OutlineInputBorder(),
-                        isDense: true),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                  child: TextFormField(
-                    maxLines: 1,
-                    validator: (value) =>
-                    value.isEmpty ? AppLocalizations.of(context).pleaseConfirmPassword : null,
-                    onSaved: (value) => _confirmPassword = value,
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        labelText: AppLocalizations.of(context).confirmPassword,
-                        labelStyle: TextStyle(
-                            color: const Color(0xFF9e9e9e),
-                            fontSize: 13,
-                            fontFamily: 'Cairo'),
-                        alignLabelWithHint: true,
-                        border: OutlineInputBorder(),
-                        isDense: true),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                  child: TextFormField(
-                    maxLines: 1,
-                    validator: (value) =>
-                    value.isEmpty ? AppLocalizations.of(context).pleaseEnterPhoneNumber : null,
-                    onSaved: (value) => _phoneNumber = value,
-                    decoration: InputDecoration(
-                        labelText: AppLocalizations.of(context).phoneNumber,
-                        labelStyle: TextStyle(
-                            color: const Color(0xFF9e9e9e),
-                            fontSize: 13,
-                            fontFamily: 'Cairo'),
-                        alignLabelWithHint: true,
-                        border: OutlineInputBorder(),
-                        isDense: true),
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                _registerButton(),
-                _loginLabel(),
-              ],
-            )),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                        child: TextFormField(
+                          maxLines: 1,
+                          validator: (value) => value.isEmpty
+                              ? AppLocalizations.of(context).pleaseEnterUsername
+                              : null,
+                          onSaved: (value) => _username = value,
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.only(
+                                  top: 11, bottom: 11, left: 8, right: 8),
+                              labelText: AppLocalizations.of(context).username,
+                              labelStyle: TextStyle(
+                                  color: const Color(0xFF9e9e9e),
+                                  fontSize: 13,
+                                  fontFamily: 'Cairo'),
+                              alignLabelWithHint: true,
+                              border: OutlineInputBorder(),
+                              isDense: true),
+                        ),
+                      ),
+                      Container(
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                        child: TextFormField(
+                          maxLines: 1,
+                          validator: (value) => value.isEmpty
+                              ? AppLocalizations.of(context).pleaseEnterEmail
+                              : null,
+                          onSaved: (value) => _email = value,
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.only(
+                                  top: 11, bottom: 11, left: 8, right: 8),
+                              labelText: AppLocalizations.of(context).email,
+                              labelStyle: TextStyle(
+                                  color: const Color(0xFF9e9e9e),
+                                  fontSize: 13,
+                                  fontFamily: 'Cairo'),
+                              alignLabelWithHint: true,
+                              border: OutlineInputBorder(),
+                              isDense: true),
+                        ),
+                      ),
+                      Container(
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                        child: TextFormField(
+                          maxLines: 1,
+                          validator: (value) => value.isEmpty
+                              ? AppLocalizations.of(context).pleaseEnterPassword
+                              : null,
+                          onSaved: (value) => _password = value,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.only(
+                                  top: 11, bottom: 11, left: 8, right: 8),
+                              labelText: AppLocalizations.of(context).password,
+                              labelStyle: TextStyle(
+                                  color: const Color(0xFF9e9e9e),
+                                  fontSize: 13,
+                                  fontFamily: 'Cairo'),
+                              alignLabelWithHint: true,
+                              border: OutlineInputBorder(),
+                              isDense: true),
+                        ),
+                      ),
+                      Container(
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                        child: TextFormField(
+                          maxLines: 1,
+                          validator: (value) => value.isEmpty
+                              ? AppLocalizations.of(context)
+                                  .pleaseConfirmPassword
+                              : null,
+                          onSaved: (value) => _confirmPassword = value,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.only(
+                                  top: 11, bottom: 11, left: 8, right: 8),
+                              labelText:
+                                  AppLocalizations.of(context).confirmPassword,
+                              labelStyle: TextStyle(
+                                  color: const Color(0xFF9e9e9e),
+                                  fontSize: 13,
+                                  fontFamily: 'Cairo'),
+                              alignLabelWithHint: true,
+                              border: OutlineInputBorder(),
+                              isDense: true),
+                        ),
+                      ),
+                      Container(
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                        child: TextFormField(
+                          maxLines: 1,
+                          validator: (value) => value.isEmpty
+                              ? AppLocalizations.of(context)
+                                  .pleaseEnterPhoneNumber
+                              : null,
+                          onSaved: (value) => _phoneNumber = value,
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.only(
+                                  top: 11, bottom: 11, left: 8, right: 8),
+                              labelText:
+                                  AppLocalizations.of(context).phoneNumber,
+                              labelStyle: TextStyle(
+                                  color: const Color(0xFF9e9e9e),
+                                  fontSize: 13,
+                                  fontFamily: 'Cairo'),
+                              alignLabelWithHint: true,
+                              border: OutlineInputBorder(),
+                              isDense: true),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      GestureDetector(
+                          onTap: () {
+                            final form = formKey.currentState;
+                            if (form.validate()) {
+                              form.save();
+                              if (_password == _confirmPassword) {
+                                authProvider
+                                    .register(_username, _email, _password)
+                                    .then((response) {
+                                  if (response['status']) {
+                                    showDialog(
+                                        context: context,
+                                        builder: (_) => SuccessDialog(
+                                              message: AppLocalizations.of(
+                                                      context)
+                                                  .accountSuccessfullyCreated,
+                                            ));
+                                    Timer(Duration(seconds: 1), () {
+                                      Navigator.pop(context);
+                                      Navigator.of(context).pushReplacement(
+                                          MaterialPageRoute(
+                                              builder: (BuildContext context) =>
+                                                  BottomNavScreen()));
+                                    });
+                                  } else {
+                                    print(response['status']);
+                                    print(response.toString());
+                                  }
+                                });
+                              } else {
+                                Flushbar(
+                                  title: AppLocalizations.of(context)
+                                      .registrationFailed,
+                                  message: AppLocalizations.of(context)
+                                      .passwordsDoNotMatch,
+                                  duration: Duration(milliseconds: 1500),
+                                ).show(context);
+                              }
+                            }
+                          },
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            height: 40,
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 8),
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5)),
+                                boxShadow: <BoxShadow>[
+                                  BoxShadow(
+                                      color: const Color(0x709e9e9e),
+                                      offset: Offset(1, 2),
+                                      blurRadius: 5,
+                                      spreadRadius: 1)
+                                ],
+                                color: const Color(0xffFEC200)),
+                            child: authProvider.registeredStatus ==
+                                    Status.Registering
+                                ? _loading()
+                                : Text(
+                                    AppLocalizations.of(context)
+                                        .createNewAccount,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                          )),
+                      _loginLabel(),
+                    ],
+                  )),
+            ),
+          ));
+        },
       ),
-    ));
+    );
   }
 
-  Widget _registerButton() {
-    return GestureDetector(
-        onTap: () {
-          final form = formKey.currentState;
-          if (form.validate()) {
-            form.save();
-            print(_username);
-            print(_email);
-            print(_password);
-          }
-          // showDialog(
-          //     context: context,
-          //     builder: (_) => SuccessDialog(
-          //           message:
-          //               AppLocalizations.of(context).accountSuccessfullyCreated,
-          //         ));
-          // Timer(Duration(seconds: 1), () {
-          //   Navigator.pop(context);
-          //   Navigator.of(context).pushReplacement(MaterialPageRoute(
-          //       builder: (BuildContext context) => BottomNavScreen()));
-          // });
-        },
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          height: 40,
-          margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(5)),
-              boxShadow: <BoxShadow>[
-                BoxShadow(
-                    color: const Color(0x709e9e9e),
-                    offset: Offset(1, 2),
-                    blurRadius: 5,
-                    spreadRadius: 1)
-              ],
-              color: const Color(0xffFEC200)),
-          child: Text(
-            AppLocalizations.of(context).createNewAccount,
-            style: TextStyle(
-                fontSize: 16, color: Colors.white, fontFamily: 'Cairo'),
+  Widget _loading() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        SizedBox(
+          child: CircularProgressIndicator(
+              backgroundColor: Colors.white,
+              strokeWidth: 2,
+              valueColor:
+                  new AlwaysStoppedAnimation<Color>(const Color(0xffFEC200))),
+          height: 20,
+          width: 20,
+        ),
+        SizedBox(
+          width: 10,
+        ),
+        Text(
+          AppLocalizations.of(context).registering,
+          style: TextStyle(
+            fontSize: 14,
+            color: Colors.white,
           ),
-        ));
+        )
+      ],
+    );
   }
 
   Widget _loginLabel() {

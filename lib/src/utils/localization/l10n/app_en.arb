@@ -216,5 +216,17 @@
   "pleaseEnterPhoneNumber": "Please enter phone number",
   "@pleaseEnterPhoneNumber": {
     "description": ""
+  },
+  "registering": "Registering ... Please wait",
+  "@registering": {
+    "description": ""
+  },
+  "registrationFailed": "Registration Failed",
+  "@registrationFailed": {
+    "description": ""
+  },
+  "passwordsDoNotMatch": "Passwords do not match",
+  "@passwordsDoNotMatch": {
+    "description": ""
   }
 }
