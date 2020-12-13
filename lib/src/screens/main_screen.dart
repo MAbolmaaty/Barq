@@ -1,15 +1,16 @@
+import 'dart:io';
 import 'dart:math';
 
 import 'package:barq/src/screens/active_links_screen.dart';
 import 'package:barq/src/screens/all_links_screen.dart';
 import 'package:barq/src/screens/deactivated_links_screen.dart';
-//import 'file:///C:/MU/barq/lib/src/utils/localization/app_locale.dart';
+import 'package:barq/src/utils/networking/new_website_api.dart';
 import 'package:barq/src/widgets/new_website_dialog.dart';
 import 'package:barq/src/widgets/screen_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../utils/localization/app_locale.dart';
 import 'login_screen.dart';
@@ -26,7 +27,9 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _currentIndex = 0;
+
+  File _image;
+  final picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -97,8 +100,30 @@ class _MainScreenState extends State<MainScreen> {
             context: context,
             builder: (_) => NewWebsiteDialog(),
           );
+
+          // NewWebsiteApi().addNewWebsite("ADD Api").then((response){
+          // });
+
+          //getImage();
+
+
         },
       ),
     );
+  }
+
+  Future getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.camera);
+
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+        NewWebsiteApi newWebsiteApi = NewWebsiteApi();
+        newWebsiteApi.addNewWebsite(_image);
+        print('image selected.');
+      } else {
+        print('No image selected.');
+      }
+    });
   }
 }
