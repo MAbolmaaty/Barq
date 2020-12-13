@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:barq/src/screens/active_links_screen.dart';
 import 'package:barq/src/screens/all_links_screen.dart';
 import 'package:barq/src/screens/deactivated_links_screen.dart';
-import 'file:///C:/MU/barq/lib/src/utils/localization/app_locale.dart';
+//import 'file:///C:/MU/barq/lib/src/utils/localization/app_locale.dart';
 import 'package:barq/src/widgets/new_website_dialog.dart';
 import 'package:barq/src/widgets/screen_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +11,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../utils/localization/app_locale.dart';
 import 'login_screen.dart';
 
 class MainScreen extends StatefulWidget {
