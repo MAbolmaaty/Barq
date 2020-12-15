@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:barq/src/models/register_response_model.dart';
+import 'package:barq/src/models/authentication_response_model.dart';
 import 'package:barq/src/utils/networking/app_url.dart';
 import 'package:barq/src/utils/preferences/user_preferences.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ class AuthProvider with ChangeNotifier {
 
   Future<Map<String, dynamic>> register(String username, String email, String password) async {
 
-    final Map<String, dynamic> registrationData = {
+    final Map<String, dynamic> requestBody = {
         'username': username,
         'email': email,
         'password': password
@@ -37,8 +37,26 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
 
     return await post(AppUrl.register_url,
-    body: json.encode(registrationData),
+    body: json.encode(requestBody),
     headers: {'Content-Type': 'application/json'})
+        .then(onValue)
+        .catchError(onError);
+
+  }
+
+  Future<Map<String, dynamic>> login(String email, String password) async {
+
+    final Map<String, dynamic> requestBody = {
+      'identifier': email,
+      'password': password
+    };
+
+    _loggedInStatus = Status.Registering;
+    notifyListeners();
+
+    return await post(AppUrl.register_url,
+        body: json.encode(requestBody),
+        headers: {'Content-Type': 'application/json'})
         .then(onValue)
         .catchError(onError);
 
@@ -49,19 +67,19 @@ class AuthProvider with ChangeNotifier {
     final Map<String, dynamic> responseData = json.decode(response.body);
 
     if(response.statusCode == 200){
-      RegisterResponseModel registerResponseModel = RegisterResponseModel.fromJson(responseData);
+      AuthenticationResponseModel authenticationResponseModel = AuthenticationResponseModel.fromJson(responseData);
 
-      UserPreferences().saveUser(registerResponseModel);
+      UserPreferences().saveUser(authenticationResponseModel);
 
       result = {
         'status': true,
-        'message': 'Successfully registered',
-        'data': registerResponseModel
+        'message': 'Successfully authenticated',
+        'data': authenticationResponseModel
       };
     } else {
       result = {
         'status': false,
-        'message': 'Registration failed',
+        'message': 'Authentication failed',
         'data': responseData
       };
     }

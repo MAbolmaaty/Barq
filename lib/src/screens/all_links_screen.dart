@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:barq/src/models/websites_response_model.dart';
 import 'package:barq/src/screens/website_details_screen.dart';
 import 'package:barq/src/utils/networking/app_url.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:http/http.dart' as http;
@@ -18,7 +19,7 @@ class AllLinksScreen extends StatefulWidget {
 
 class _AllLinksScreenState extends State<AllLinksScreen> {
   bool isLoading = false;
-  List<WebsitesResponseModel> websites;
+  List<WebsitesResponseModel> websites = List();
 
   @override
   void initState() {
@@ -29,11 +30,7 @@ class _AllLinksScreenState extends State<AllLinksScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: isLoading
-          ? CircularProgressIndicator(
-                backgroundColor: Colors.black,
-              )
-          : buildDataWidget(),
+      body: isLoading ? _loading() : buildDataWidget(),
     );
   }
 
@@ -43,22 +40,40 @@ class _AllLinksScreenState extends State<AllLinksScreen> {
     });
 
     var response = await http.get(Uri.parse(AppUrl.websites_url));
+    if(response.statusCode != 200){
+      setState(() {
+        isLoading = false;
+        Flushbar(
+          title: AppLocalizations.of(context)
+              .loadingFailed,
+          message: AppLocalizations.of(context)
+              .couldNotFetchData,
+          duration: Duration(milliseconds: 1500),
+        ).show(context);
+      });
+    }
     var parsedJson = await json.decode(response.body) as List;
     setState(() {
-      websites = parsedJson.map((websitesResponseModel) => WebsitesResponseModel.fromJson(websitesResponseModel)).toList();
+      websites = parsedJson
+          .map((websitesResponseModel) =>
+              WebsitesResponseModel.fromJson(websitesResponseModel))
+          .toList();
+      websites = websites.reversed.toList();
       isLoading = false;
     });
   }
 
   buildDataWidget() {
     if (websites.length < 1) {
-      return Container(
+      return Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Text(
             AppLocalizations.of(context).addWebsite,
             style: TextStyle(
-                fontFamily: 'Cairo', fontSize: 14, color: Colors.black),
+              fontSize: 14,
+              color: Colors.black,
+            ),
             textAlign: TextAlign.center,
           ),
         ),
@@ -76,17 +91,11 @@ class _AllLinksScreenState extends State<AllLinksScreen> {
                   margin: const EdgeInsets.all(8),
                   child: Row(
                     children: <Widget>[
-                      websites[index].status
-                          ? Icon(
-                              Icons.language,
-                              color: Colors.orange,
-                              size: 50,
-                            )
-                          : Icon(
-                              Icons.error,
-                              color: Colors.red,
-                              size: 50,
-                            ),
+                      Icon(
+                        Icons.language,
+                        color: Colors.orange,
+                        size: 50,
+                      ),
                       Container(
                           margin:
                               EdgeInsets.symmetric(vertical: 0, horizontal: 16),
@@ -96,13 +105,16 @@ class _AllLinksScreenState extends State<AllLinksScreen> {
                               Text(
                                 '${websites[index].websiteName}',
                                 style: TextStyle(
-                                    fontSize: 16, color: Colors.black),
+                                  fontSize: 16,
+                                  color: Colors.black,
+                                ),
                               ),
                               Text(
                                 '${websites[index].websiteURL}',
                                 style: TextStyle(
                                     fontSize: 12,
-                                    color: const Color(0x909e9e9e)),
+                                    color: const Color(0x909e9e9e),
+                                    fontFamily: ''),
                               )
                             ],
                           ))
@@ -111,5 +123,19 @@ class _AllLinksScreenState extends State<AllLinksScreen> {
                 ));
           });
     }
+  }
+
+  Widget _loading() {
+    return Center(
+      child: SizedBox(
+        child: CircularProgressIndicator(
+            backgroundColor: Colors.black,
+            strokeWidth: 2,
+            valueColor:
+                new AlwaysStoppedAnimation<Color>(const Color(0xffFEC200))),
+        height: 60,
+        width: 60,
+      ),
+    );
   }
 }

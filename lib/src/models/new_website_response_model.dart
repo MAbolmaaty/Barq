@@ -1,4 +1,4 @@
-class WebsitesResponseModel {
+class NewWebsiteResponseModel {
   String sId;
   String publishedAt;
   int checkingTime;
@@ -9,7 +9,7 @@ class WebsitesResponseModel {
   int iV;
   String id;
 
-  WebsitesResponseModel(
+  NewWebsiteResponseModel(
       {this.sId,
         this.publishedAt,
         this.checkingTime,
@@ -20,7 +20,7 @@ class WebsitesResponseModel {
         this.iV,
         this.id});
 
-  WebsitesResponseModel.fromJson(Map<String, dynamic> json) {
+  NewWebsiteResponseModel.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
     publishedAt = json['published_at'];
     checkingTime = json['checkingTime'];

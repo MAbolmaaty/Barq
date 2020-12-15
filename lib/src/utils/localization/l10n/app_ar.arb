@@ -97,8 +97,8 @@
   "@hours": {
     "description": ""
   },
-  "create": "إنشاء",
-  "@create": {
+  "add": "اضف",
+  "@add": {
     "description": ""
   },
   "notifications": "الاشعارات",
@@ -227,6 +227,30 @@
   },
   "passwordsDoNotMatch": "كلمة المرور غير متطابقة",
   "@passwordsDoNotMatch": {
+    "description": ""
+  },
+  "pleaseEnterWebsiteName": "من فضلك ادخل اسم الموقع",
+  "@pleaseEnterWebsiteName": {
+    "description": ""
+  },
+  "pleaseEnterWebsiteURL": "من فضلك ادخل رابط الموقع",
+  "@pleaseEnterWebsiteURL": {
+    "description": ""
+  },
+  "addingNewWebsite": "اضافة موقع جديد",
+  "@addingNewWebsite": {
+    "description": ""
+  },
+  "loadingFailed": "فشل التحميل",
+  "@loadingFailed": {
+    "description": ""
+  },
+  "couldNotFetchData": "فشل الاتصال بالسيرفر",
+  "@couldNotFetchData": {
+    "description": ""
+  },
+  "usernameOrEmail": "اسم المستخدم او البريد الالكتروني",
+  "@usernameOrEmail": {
     "description": ""
   }
 }

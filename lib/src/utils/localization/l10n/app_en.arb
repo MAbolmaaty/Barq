@@ -97,8 +97,8 @@
   "@hours": {
     "description": ""
   },
-  "create": "Create",
-  "@create": {
+  "add": "Add",
+  "@add": {
     "description": ""
   },
   "notifications": "Notifications",
@@ -227,6 +227,30 @@
   },
   "passwordsDoNotMatch": "Passwords do not match",
   "@passwordsDoNotMatch": {
+    "description": ""
+  },
+  "pleaseEnterWebsiteName": "Please enter website name",
+  "@pleaseEnterWebsiteName": {
+    "description": ""
+  },
+  "pleaseEnterWebsiteURL": "Please enter website url",
+  "@pleaseEnterWebsiteURL": {
+    "description": ""
+  },
+  "addingNewWebsite": "Adding new website",
+  "@addingNewWebsite": {
+    "description": ""
+  },
+  "loadingFailed": "Loading Failed",
+  "@loadingFailed": {
+    "description": ""
+  },
+  "couldNotFetchData": "Couldn't get your data from server",
+  "@couldNotFetchData": {
+    "description": ""
+  },
+  "usernameOrEmail": "Username or E-mail",
+  "@usernameOrEmail": {
     "description": ""
   }
 }

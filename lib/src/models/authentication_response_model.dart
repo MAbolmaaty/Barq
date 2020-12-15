@@ -1,10 +1,10 @@
-class RegisterResponseModel {
+class AuthenticationResponseModel {
   String jwt;
   User user;
 
-  RegisterResponseModel({this.jwt, this.user});
+  AuthenticationResponseModel({this.jwt, this.user});
 
-  RegisterResponseModel.fromJson(Map<String, dynamic> json) {
+  AuthenticationResponseModel.fromJson(Map<String, dynamic> json) {
     jwt = json['jwt'];
     user = json['user'] != null ? new User.fromJson(json['user']) : null;
   }

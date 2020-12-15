@@ -1,80 +1,61 @@
 import 'dart:async';
-import 'dart:io';
+import 'dart:convert';
 
-import 'package:http/http.dart' as http;
-import 'package:http_parser/http_parser.dart';
+import 'package:barq/src/models/new_website_response_model.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
-class NewWebsiteApi {
-  // Future<Map<String, dynamic>> addNewWebsite(String name) async {
-  //
-  //   final Map<String, dynamic> data = {
-  //     'name' : name,
-  //   };
-  //
-  //   return await post("https://barq-app.herokuapp.com/websites",
-  //   body: json.encode(data),
-  //   headers: {'Content-Type': 'application/json'})
-  //       .then(onValue)
-  //       .catchError(onError);
-  // }
+enum Status { Connect, Succeed, Failed }
 
-  Future<int> addNewWebsite(File file) async {
-    var request = http.MultipartRequest(
-        'POST', Uri.parse("https://barq-app.herokuapp.com/websites"));
+class NewWebsiteApi with ChangeNotifier {
 
-    Map<String, String> headers = {
-      "Content-type": "multipart/form-data",
+  Status _addingNewWebsite;
+
+  Status get addingNewWebsiteStatus => _addingNewWebsite;
+
+  Future<Map<String, dynamic>> addNewWebsite(
+      {String websiteName, String websiteURL, String checkingTime}) async {
+
+    final Map<String, dynamic> data = {
+      'websiteName': websiteName,
+      'websiteURL': websiteURL,
+      'checkingTime': checkingTime
     };
 
-    // Map<String, dynamic> fields = {
-    //   'data': {'name': 'testing'},
-    // };
+    _addingNewWebsite = Status.Connect;
+    notifyListeners();
 
-    request.headers.addAll(headers);
-
-    // request.fields.addAll({
-    //   "name": "testing",
-    // });
-
-    request.files.add(
-      http.MultipartFile(
-        'photo',
-        file.readAsBytes().asStream(),
-        file.lengthSync(),
-        filename: 'photo',
-        contentType: MediaType('image','jpeg'),
-      ),
-    );
-
-    var res = await request.send();
-    var response = await http.Response.fromStream(res);
-    print(response.body.toString());
-    return res.statusCode;
+    return await post("https://barq-app.herokuapp.com/websites",
+            body: json.encode(data),
+            headers: {'Content-Type': 'application/json'})
+        .then(onValue)
+        .catchError(onError);
   }
 
-// static Future<FutureOr> onValue(Response response) async {
-//   var result;
-//   final Map<String, dynamic> responseData = json.decode(response.body);
-//
-//   if(response.statusCode == 200){
-//     print(response.body.toString());
-//     result = {
-//       'status': true,
-//       'message': 'Successfully registered',
-//     };
-//   } else {
-//     result = {
-//       'status': false,
-//       'message': 'Registration failed',
-//       'data': responseData
-//     };
-//   }
-//
-//   return result;
-// }
-//
-// static onError(error){
-//   print('the error is $error.detail');
-//   return {'status': false, 'message': 'Unsuccessful Request', 'data': error};
-// }
+  static Future<FutureOr> onValue(Response response) async {
+    var result;
+    final Map<String, dynamic> responseData = json.decode(response.body);
+
+    if (response.statusCode == 200) {
+      NewWebsiteResponseModel newWebsiteResponseModel = NewWebsiteResponseModel.fromJson(responseData);
+      result = {
+        'status': true,
+        'message': 'Successfully added new website',
+        'data' : newWebsiteResponseModel
+      };
+    } else {
+      result = {
+        'status': false,
+        'message': 'Adding new website failed',
+        'data': responseData
+      };
+    }
+
+    return result;
+  }
+
+  static onError(error) {
+    print('the error is $error.detail');
+    return {'status': false, 'message': 'Unsuccessful Request', 'data': error};
+  }
 }

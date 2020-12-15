@@ -100,30 +100,23 @@ class _MainScreenState extends State<MainScreen> {
             context: context,
             builder: (_) => NewWebsiteDialog(),
           );
-
-          // NewWebsiteApi().addNewWebsite("ADD Api").then((response){
-          // });
-
-          //getImage();
-
-
         },
       ),
     );
   }
 
-  Future getImage() async {
-    final pickedFile = await picker.getImage(source: ImageSource.camera);
-
-    setState(() {
-      if (pickedFile != null) {
-        _image = File(pickedFile.path);
-        NewWebsiteApi newWebsiteApi = NewWebsiteApi();
-        newWebsiteApi.addNewWebsite(_image);
-        print('image selected.');
-      } else {
-        print('No image selected.');
-      }
-    });
-  }
+  // Future getImage() async {
+  //   final pickedFile = await picker.getImage(source: ImageSource.camera);
+  //
+  //   setState(() {
+  //     if (pickedFile != null) {
+  //       _image = File(pickedFile.path);
+  //       NewWebsiteApi newWebsiteApi = NewWebsiteApi();
+  //       newWebsiteApi.addNewWebsite(_image);
+  //       print('image selected.');
+  //     } else {
+  //       print('No image selected.');
+  //     }
+  //   });
+  // }
 }

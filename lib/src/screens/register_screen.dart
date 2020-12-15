@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:barq/src/utils/networking/auth_provider.dart';
+import 'package:barq/src/utils/networking/authentication_api.dart';
 import 'package:barq/src/widgets/success_dialog.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
@@ -60,6 +60,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       SizedBox(
                         height: 20,
                       ),
+                      ////////////////////////// Username
                       Container(
                         margin:
                             EdgeInsets.symmetric(horizontal: 16, vertical: 4),
@@ -82,6 +83,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               isDense: true),
                         ),
                       ),
+                      ///////////////////// Email
                       Container(
                         margin:
                             EdgeInsets.symmetric(horizontal: 16, vertical: 4),
@@ -104,6 +106,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               isDense: true),
                         ),
                       ),
+                      ////////////////////////////////////// Password
                       Container(
                         margin:
                             EdgeInsets.symmetric(horizontal: 16, vertical: 4),
@@ -179,6 +182,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       SizedBox(
                         height: 20,
                       ),
+                      ////////////////////////// Register
                       GestureDetector(
                           onTap: () {
                             final form = formKey.currentState;
