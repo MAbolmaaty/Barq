@@ -28,9 +28,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => AuthProvider(),
-      child: Consumer<AuthProvider>(
-        builder: (context, authProvider, child) {
+      create: (context) => AuthenticationApi(),
+      child: Consumer<AuthenticationApi>(
+        builder: (context, authenticationApi, child) {
           return SafeArea(
               child: Scaffold(
             body: SingleChildScrollView(
@@ -183,75 +183,83 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         height: 20,
                       ),
                       ////////////////////////// Register
-                      GestureDetector(
-                          onTap: () {
-                            final form = formKey.currentState;
-                            if (form.validate()) {
-                              form.save();
-                              if (_password == _confirmPassword) {
-                                authProvider
-                                    .register(_username, _email, _password)
-                                    .then((response) {
-                                  if (response['status']) {
-                                    showDialog(
-                                        context: context,
-                                        builder: (_) => SuccessDialog(
-                                              message: AppLocalizations.of(
-                                                      context)
-                                                  .accountSuccessfullyCreated,
-                                            ));
-                                    Timer(Duration(seconds: 1), () {
-                                      Navigator.pop(context);
-                                      Navigator.of(context).pushReplacement(
-                                          MaterialPageRoute(
-                                              builder: (BuildContext context) =>
-                                                  BottomNavScreen()));
-                                    });
-                                  } else {
-                                    print(response['status']);
-                                    print(response.toString());
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: 40,
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
+                            boxShadow: <BoxShadow>[
+                              BoxShadow(
+                                  color: const Color(0x709e9e9e),
+                                  offset: Offset(1, 2),
+                                  blurRadius: 5,
+                                  spreadRadius: 1)
+                            ],
+                            color: const Color(0xffFEC200)),
+                        child: authenticationApi.registeredStatus ==
+                                Status.Registering
+                            ? _loading()
+                            : GestureDetector(
+                                onTap: () {
+                                  final form = formKey.currentState;
+                                  if (form.validate()) {
+                                    form.save();
+                                    if (_password == _confirmPassword) {
+                                      authenticationApi
+                                          .register(
+                                              _username, _email, _password)
+                                          .then((result) {
+                                        if (result['status']) {
+                                          showDialog(
+                                              context: context,
+                                              builder: (_) => SuccessDialog(
+                                                    message: AppLocalizations
+                                                            .of(context)
+                                                        .accountSuccessfullyCreated,
+                                                  ));
+                                          Timer(Duration(seconds: 1), () {
+                                            Navigator.pop(context);
+                                            Navigator.of(context)
+                                                .pushReplacement(
+                                                    MaterialPageRoute(
+                                                        builder: (BuildContext
+                                                                context) =>
+                                                            BottomNavScreen()));
+                                          });
+                                        } else {
+                                          Flushbar(
+                                            title: AppLocalizations.of(context)
+                                                .registrationFailed,
+                                            message:
+                                                AppLocalizations.of(context)
+                                                    .invalidData,
+                                            duration:
+                                                Duration(milliseconds: 1500),
+                                          ).show(context);
+                                        }
+                                      });
+                                    } else {
+                                      Flushbar(
+                                        title: AppLocalizations.of(context)
+                                            .registrationFailed,
+                                        message: AppLocalizations.of(context)
+                                            .passwordsDoNotMatch,
+                                        duration: Duration(milliseconds: 1500),
+                                      ).show(context);
+                                    }
                                   }
-                                });
-                              } else {
-                                Flushbar(
-                                  title: AppLocalizations.of(context)
-                                      .registrationFailed,
-                                  message: AppLocalizations.of(context)
-                                      .passwordsDoNotMatch,
-                                  duration: Duration(milliseconds: 1500),
-                                ).show(context);
-                              }
-                            }
-                          },
-                          child: Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: 40,
-                            margin: EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 8),
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(5)),
-                                boxShadow: <BoxShadow>[
-                                  BoxShadow(
-                                      color: const Color(0x709e9e9e),
-                                      offset: Offset(1, 2),
-                                      blurRadius: 5,
-                                      spreadRadius: 1)
-                                ],
-                                color: const Color(0xffFEC200)),
-                            child: authProvider.registeredStatus ==
-                                    Status.Registering
-                                ? _loading()
-                                : Text(
-                                    AppLocalizations.of(context)
-                                        .createNewAccount,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.white,
-                                    ),
+                                },
+                                child: Text(
+                                  AppLocalizations.of(context).createNewAccount,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
                                   ),
-                          )),
+                                )),
+                      ),
                       _loginLabel(),
                     ],
                   )),

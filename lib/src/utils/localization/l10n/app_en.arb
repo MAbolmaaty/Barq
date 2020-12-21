@@ -252,5 +252,9 @@
   "usernameOrEmail": "Username or E-mail",
   "@usernameOrEmail": {
     "description": ""
+  },
+  "invalidData": "Invalid Data",
+  "@invalidData": {
+    "description": ""
   }
 }

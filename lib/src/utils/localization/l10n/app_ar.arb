@@ -252,5 +252,9 @@
   "usernameOrEmail": "اسم المستخدم او البريد الالكتروني",
   "@usernameOrEmail": {
     "description": ""
+  },
+  "invalidData": "بيانات غير صحيحة",
+  "@invalidData": {
+    "description": ""
   }
 }

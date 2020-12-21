@@ -1,12 +1,10 @@
-import 'dart:convert';
 
 import 'package:barq/src/models/websites_response_model.dart';
 import 'package:barq/src/screens/website_details_screen.dart';
-import 'package:barq/src/utils/networking/app_url.dart';
-import 'package:flushbar/flushbar.dart';
+import 'package:barq/src/utils/networking/websites_api.dart';
+import 'package:barq/src/utils/preferences/user_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:http/http.dart' as http;
 
 class AllLinksScreen extends StatefulWidget {
   static Route<dynamic> route() => MaterialPageRoute(
@@ -29,37 +27,70 @@ class _AllLinksScreenState extends State<AllLinksScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: isLoading ? _loading() : buildDataWidget(),
+    // return ChangeNotifierProvider(
+    //   create: (context) => WebsitesApi(),
+    //   child: Consumer<WebsitesApi>(
+    //     builder: (context, websitesApi, child) {
+    //       UserPreferences userPreferences = UserPreferences();
+    //       userPreferences.getUser().then((authenticationResponseModel) => {
+    //         websitesApi.getWebsites(authenticationResponseModel.user.sId, authenticationResponseModel.jwt).then((result) {
+    //           if(result['status']){
+    //             websites = result['data'];
+    //           }
+    //         })
+    //       });
+    //       return SafeArea(
+    //         child: Scaffold(
+    //           body: WebsitesApi.loading ? _loading() : buildDataWidget(),
+    //         ),
+    //       );
+    //     },
+    //   ),
+    // );
+
+    return SafeArea(
+      child: Scaffold(
+        body: isLoading ? _loading() : buildDataWidget(),
+      ),
     );
   }
 
   void getDataFromAPI() async {
-    setState(() {
-      isLoading = true;
-    });
+    // var response = await http.get(Uri.parse(AppUrl.websites_url), headers: {
+    //   'Authorization':
+    //       'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmZGE4MzY5NjJkYWYyMDAxNzNjZmIyMCIsImlhdCI6MTYwODE1Njc5MSwiZXhwIjoxNjEwNzQ4NzkxfQ.V9VB-D_gaofRcsf-WPuSopT1a1oudZajsLbsydevkMs'
+    // });
+    // if (response.statusCode != 200) {
+    //   setState(() {
+    //     Flushbar(
+    //       title: AppLocalizations.of(context).loadingFailed,
+    //       message: AppLocalizations.of(context).couldNotFetchData,
+    //       duration: Duration(milliseconds: 1500),
+    //     ).show(context);
+    //   });
+    // }
+    // var parsedJson = await json.decode(response.body) as List;
+    // setState(() {
+    //   websites = parsedJson
+    //       .map((websitesResponseModel) =>
+    //           WebsitesResponseModel.fromJson(websitesResponseModel))
+    //       .toList();
+    //   websites = websites.reversed.toList();
+    // });
 
-    var response = await http.get(Uri.parse(AppUrl.websites_url));
-    if(response.statusCode != 200){
-      setState(() {
-        isLoading = false;
-        Flushbar(
-          title: AppLocalizations.of(context)
-              .loadingFailed,
-          message: AppLocalizations.of(context)
-              .couldNotFetchData,
-          duration: Duration(milliseconds: 1500),
-        ).show(context);
-      });
-    }
-    var parsedJson = await json.decode(response.body) as List;
-    setState(() {
-      websites = parsedJson
-          .map((websitesResponseModel) =>
-              WebsitesResponseModel.fromJson(websitesResponseModel))
-          .toList();
-      websites = websites.reversed.toList();
-      isLoading = false;
+    isLoading = true;
+    UserPreferences userPreferences = UserPreferences();
+    userPreferences.getUser().then((authenticationResponseModel) => {
+      WebsitesApi().getWebsites(authenticationResponseModel.user.sId, authenticationResponseModel.jwt).then((result) {
+        if(result['status']){
+          setState(() {
+            websites = result['data'];
+            isLoading = false;
+          });
+        } else{
+          isLoading = false;
+        }
+      })
     });
   }
 

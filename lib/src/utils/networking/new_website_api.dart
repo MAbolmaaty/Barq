@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:barq/src/models/new_website_response_model.dart';
+import 'package:barq/src/utils/networking/app_url.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
@@ -25,7 +26,7 @@ class NewWebsiteApi with ChangeNotifier {
     _addingNewWebsite = Status.Connect;
     notifyListeners();
 
-    return await post("https://barq-app.herokuapp.com/websites",
+    return await post(AppUrl.websites_url,
             body: json.encode(data),
             headers: {'Content-Type': 'application/json'})
         .then(onValue)

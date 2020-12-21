@@ -1,6 +1,9 @@
 import 'dart:async';
 
 import 'package:barq/src/screens/bottom_nav_screen.dart';
+import 'package:barq/src/screens/login_screen.dart';
+import 'package:barq/src/utils/networking/user_api.dart';
+import 'package:barq/src/utils/preferences/user_preferences.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -12,10 +15,38 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(
-        Duration(seconds: 3),
-        () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (BuildContext context) => BottomNavScreen())));
+    // Timer(
+    //     Duration(seconds: 3),
+    //     () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+    //         builder: (BuildContext context) => LoginScreen())));
+    UserPreferences userPreferences = UserPreferences();
+    userPreferences.getUser().then((authenticationResponseModel) => {
+          if (authenticationResponseModel != null)
+            {
+              UserApi()
+                  .getUser(authenticationResponseModel.jwt)
+                  .then((result) {
+                    if(result['status']){
+                      Timer(
+                          Duration(seconds: 3),
+                              () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+                              builder: (BuildContext context) => BottomNavScreen())));
+                    } else{
+                      Timer(
+                          Duration(seconds: 3),
+                              () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+                              builder: (BuildContext context) => LoginScreen())));
+                    }
+              })
+            }
+          else
+            {
+              Timer(
+                  Duration(seconds: 3),
+                  () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (BuildContext context) => LoginScreen())))
+            }
+        });
   }
 
   @override
