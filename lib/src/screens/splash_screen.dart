@@ -15,28 +15,26 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // Timer(
-    //     Duration(seconds: 3),
-    //     () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-    //         builder: (BuildContext context) => LoginScreen())));
     UserPreferences userPreferences = UserPreferences();
     userPreferences.getUser().then((authenticationResponseModel) => {
           if (authenticationResponseModel != null)
             {
-              UserApi()
-                  .getUser(authenticationResponseModel.jwt)
-                  .then((result) {
-                    if(result['status']){
-                      Timer(
-                          Duration(seconds: 3),
-                              () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-                              builder: (BuildContext context) => BottomNavScreen())));
-                    } else{
-                      Timer(
-                          Duration(seconds: 3),
-                              () => Navigator.of(context).pushReplacement(MaterialPageRoute(
-                              builder: (BuildContext context) => LoginScreen())));
-                    }
+              UserApi().getUser(authenticationResponseModel.jwt).then((result) {
+                if (result['status']) {
+                  Timer(
+                      Duration(seconds: 3),
+                      () => Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  BottomNavScreen())));
+                } else {
+                  Timer(
+                      Duration(seconds: 3),
+                      () => Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  LoginScreen())));
+                }
               })
             }
           else
