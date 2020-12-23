@@ -9,54 +9,53 @@ import 'package:http/http.dart';
 enum Status { Connect, Succeed, Failed }
 
 class NewWebsiteApi with ChangeNotifier {
-
   Status _addingNewWebsite;
 
   Status get addingNewWebsiteStatus => _addingNewWebsite;
 
   Future<Map<String, dynamic>> addNewWebsite(
-      {String websiteName, String websiteURL, String checkingTime}) async {
+      {String websiteName,
+      String websiteURL,
+      String checkingTime,
+      String userId,
+      String token}) async {
+    var result;
 
-    final Map<String, dynamic> data = {
+    final Map<String, dynamic> requestData = {
       'websiteName': websiteName,
       'websiteURL': websiteURL,
-      'checkingTime': checkingTime
+      'checkingTime': checkingTime,
+      'user_id': userId
+    };
+
+    final Map<String, String> headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token'
     };
 
     _addingNewWebsite = Status.Connect;
     notifyListeners();
 
-    return await post(AppUrl.websites_url,
-            body: json.encode(data),
-            headers: {'Content-Type': 'application/json'})
-        .then(onValue)
-        .catchError(onError);
-  }
+    Response response = await post(AppUrl.websites_url,
+        body: json.encode(requestData),
+        headers: headers);
 
-  static Future<FutureOr> onValue(Response response) async {
-    var result;
     final Map<String, dynamic> responseData = json.decode(response.body);
 
     if (response.statusCode == 200) {
-      NewWebsiteResponseModel newWebsiteResponseModel = NewWebsiteResponseModel.fromJson(responseData);
+      NewWebsiteResponseModel newWebsiteResponseModel =
+          NewWebsiteResponseModel.fromJson(responseData);
       result = {
         'status': true,
-        'message': 'Successfully added new website',
-        'data' : newWebsiteResponseModel
+        'data': newWebsiteResponseModel
       };
     } else {
       result = {
         'status': false,
-        'message': 'Adding new website failed',
         'data': responseData
       };
     }
 
     return result;
-  }
-
-  static onError(error) {
-    print('the error is $error.detail');
-    return {'status': false, 'message': 'Unsuccessful Request', 'data': error};
   }
 }

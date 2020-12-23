@@ -8,17 +8,19 @@ class NewWebsiteResponseModel {
   String updatedAt;
   int iV;
   String id;
+  String userId;
 
   NewWebsiteResponseModel(
       {this.sId,
-        this.publishedAt,
-        this.checkingTime,
-        this.websiteURL,
-        this.websiteName,
-        this.createdAt,
-        this.updatedAt,
-        this.iV,
-        this.id});
+      this.publishedAt,
+      this.checkingTime,
+      this.websiteURL,
+      this.websiteName,
+      this.createdAt,
+      this.updatedAt,
+      this.iV,
+      this.id,
+      this.userId});
 
   NewWebsiteResponseModel.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
@@ -30,6 +32,7 @@ class NewWebsiteResponseModel {
     updatedAt = json['updatedAt'];
     iV = json['__v'];
     id = json['id'];
+    userId = json['user_id'];
   }
 
   Map<String, dynamic> toJson() {
@@ -43,6 +46,7 @@ class NewWebsiteResponseModel {
     data['updatedAt'] = this.updatedAt;
     data['__v'] = this.iV;
     data['id'] = this.id;
+    data['user_id'] = this.userId;
     return data;
   }
 }

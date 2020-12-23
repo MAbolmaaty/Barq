@@ -1,5 +1,6 @@
 import 'package:barq/src/screens/bottom_nav_screen.dart';
 import 'package:barq/src/utils/networking/new_website_api.dart';
+import 'package:barq/src/utils/preferences/user_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -70,8 +71,7 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                                     style: TextStyle(
                                         color: const Color(0xff212121),
                                         fontSize: 16.0,
-                                        fontWeight: FontWeight.w500,
-                                        fontFamily: 'Cairo'),
+                                        fontWeight: FontWeight.w500,),
                                   ),
                                 ),
                                 alignment: Alignment.topLeft,
@@ -398,19 +398,28 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                                     Route route = MaterialPageRoute(
                                         builder: (context) =>
                                             BottomNavScreen());
-                                    newWebsiteApi
-                                        .addNewWebsite(
-                                            websiteName: _websiteName,
-                                            websiteURL: _websiteURL,
-                                            checkingTime: _checkingTime)
-                                        .then((response) => {
-                                              if (response['status'])
-                                                {
-                                                  Navigator.pop(context),
-                                                  Navigator.pushReplacement(
-                                                      context, route)
-                                                }
-                                            });
+                                    UserPreferences userPreferences =
+                                        UserPreferences();
+                                    userPreferences
+                                        .getUser()
+                                        .then((authenticationResponseModel) {
+                                      newWebsiteApi
+                                          .addNewWebsite(
+                                              websiteName: _websiteName,
+                                              websiteURL: _websiteURL,
+                                              checkingTime: _checkingTime,
+                                              userId:
+                                                  authenticationResponseModel
+                                                      .user.sId, token: authenticationResponseModel.jwt)
+                                          .then((response) => {
+                                                if (response['status'])
+                                                  {
+                                                    Navigator.pop(context),
+                                                    Navigator.pushReplacement(
+                                                        context, route)
+                                                  }
+                                              });
+                                    });
                                   }
                                 },
                                 child: Container(

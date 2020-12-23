@@ -5,6 +5,7 @@ import 'package:barq/src/screens/active_links_screen.dart';
 import 'package:barq/src/screens/all_links_screen.dart';
 import 'package:barq/src/screens/deactivated_links_screen.dart';
 import 'package:barq/src/utils/networking/new_website_api.dart';
+import 'package:barq/src/utils/preferences/user_preferences.dart';
 import 'package:barq/src/widgets/new_website_dialog.dart';
 import 'package:barq/src/widgets/screen_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -27,10 +28,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-
-  File _image;
-  final picker = ImagePicker();
-
   @override
   Widget build(BuildContext context) {
     var locale = Provider.of<AppLocale>(context);
@@ -75,6 +72,7 @@ class _MainScreenState extends State<MainScreen> {
             implyLeading: false,
             thirdAction: GestureDetector(
                 onTap: () {
+                  UserPreferences().removeUser();
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (BuildContext context) => LoginScreen()));
                 },
@@ -104,19 +102,4 @@ class _MainScreenState extends State<MainScreen> {
       ),
     );
   }
-
-  // Future getImage() async {
-  //   final pickedFile = await picker.getImage(source: ImageSource.camera);
-  //
-  //   setState(() {
-  //     if (pickedFile != null) {
-  //       _image = File(pickedFile.path);
-  //       NewWebsiteApi newWebsiteApi = NewWebsiteApi();
-  //       newWebsiteApi.addNewWebsite(_image);
-  //       print('image selected.');
-  //     } else {
-  //       print('No image selected.');
-  //     }
-  //   });
-  // }
 }

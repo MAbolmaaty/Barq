@@ -5,4 +5,5 @@ class AppUrl{
   static const String register_url = baseURL + "auth/local/register/";
   static const String login_url = baseURL + "auth/local/";
   static const String user_url = baseURL + "users/me";
+  static const String upload_url = baseURL + "upload/";
 }

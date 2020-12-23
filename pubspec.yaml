@@ -28,7 +28,7 @@ dependencies:
   provider_architecture: ^1.0.5
   shared_preferences: ^0.5.12+4
   flushbar: ^1.10.4
-  image_picker: ^0.6.7+15
+  image_picker: ^0.6.7+17
   http_parser: ^3.1.4
 
   # The following adds the Cupertino Icons font to your application.
@@ -64,6 +64,7 @@ flutter:
     - assets/coffee2.jpg
     - assets/coffee3.jpg
     - assets/edit.png
+    - assets/camera.png
 
   fonts:
     - family: Cairo
