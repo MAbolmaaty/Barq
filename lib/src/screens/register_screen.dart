@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:barq/src/utils/networking/authentication_api.dart';
-import 'package:barq/src/widgets/choose_image_dialog.dart';
 import 'package:barq/src/widgets/success_dialog.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
@@ -54,9 +53,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ///////////////////////// Profile Picture
                               GestureDetector(
                                   onTap: () {
-                                    // showDialog(
-                                    //     context: context,
-                                    //     builder: (_) => ChooseImageDialog());
                                     getImage();
                                   },
                                   child: Container(
@@ -113,7 +109,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   maxLines: 1,
                                   validator: (value) => value.isEmpty
                                       ? AppLocalizations.of(context)
-                                          .pleaseEnterUsername
+                                          .enterUsername
                                       : null,
                                   onSaved: (value) => _username = value,
                                   decoration: InputDecoration(
@@ -126,8 +122,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                           AppLocalizations.of(context).username,
                                       labelStyle: TextStyle(
                                           color: const Color(0xFF9e9e9e),
-                                          fontSize: 13,
-                                          fontFamily: 'Cairo'),
+                                          fontSize: 13,),
                                       alignLabelWithHint: true,
                                       border: OutlineInputBorder(),
                                       isDense: true),
@@ -141,7 +136,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   maxLines: 1,
                                   validator: (value) => value.isEmpty
                                       ? AppLocalizations.of(context)
-                                          .pleaseEnterEmail
+                                          .enterEmail
                                       : null,
                                   onSaved: (value) => _email = value,
                                   decoration: InputDecoration(
@@ -169,7 +164,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   maxLines: 1,
                                   validator: (value) => value.isEmpty
                                       ? AppLocalizations.of(context)
-                                          .pleaseEnterPassword
+                                          .enterPassword
                                       : null,
                                   onSaved: (value) => _password = value,
                                   obscureText: true,
@@ -227,7 +222,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   maxLines: 1,
                                   validator: (value) => value.isEmpty
                                       ? AppLocalizations.of(context)
-                                          .pleaseEnterPhoneNumber
+                                          .enterPhoneNumber
                                       : null,
                                   onSaved: (value) => _phoneNumber = value,
                                   decoration: InputDecoration(
@@ -279,7 +274,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                             if (_password == _confirmPassword) {
                                               authenticationApi
                                                   .register(_username, _email,
-                                                      _password, _selectedImage)
+                                                      _password, _phoneNumber, _selectedImage)
                                                   .then((result) {
                                                 if (result['status']) {
                                                   showDialog(

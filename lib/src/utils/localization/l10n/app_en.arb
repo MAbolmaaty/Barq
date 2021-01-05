@@ -197,24 +197,24 @@
   "@addWebsite": {
     "description": ""
   },
-  "pleaseEnterUsername": "Please enter username",
-  "@pleaseEnterUsername": {
+  "enterUsername": "Please enter username",
+  "@enterUsername": {
     "description": ""
   },
-  "pleaseEnterEmail": "Please enter email",
-  "@pleaseEnterEmail": {
+  "enterEmail": "Please enter email",
+  "@enterEmail": {
     "description": ""
   },
-  "pleaseEnterPassword": "Please enter password",
-  "@pleaseEnterPassword": {
+  "enterPassword": "Please enter password",
+  "@enterPassword": {
     "description": ""
   },
   "pleaseConfirmPassword": "Please confirm password",
   "@pleaseConfirmPassword": {
     "description": ""
   },
-  "pleaseEnterPhoneNumber": "Please enter phone number",
-  "@pleaseEnterPhoneNumber": {
+  "enterPhoneNumber": "Please enter phone number",
+  "@enterPhoneNumber": {
     "description": ""
   },
   "registering": "Registering ... Please wait",
@@ -229,12 +229,12 @@
   "@passwordsDoNotMatch": {
     "description": ""
   },
-  "pleaseEnterWebsiteName": "Please enter website name",
-  "@pleaseEnterWebsiteName": {
+  "enterWebsiteName": "Please enter website name",
+  "@enterWebsiteName": {
     "description": ""
   },
-  "pleaseEnterWebsiteURL": "Please enter website url",
-  "@pleaseEnterWebsiteURL": {
+  "enterWebsiteURL": "Please enter website url",
+  "@enterWebsiteURL": {
     "description": ""
   },
   "addingNewWebsite": "Adding new website",
@@ -255,6 +255,10 @@
   },
   "invalidData": "Invalid Data",
   "@invalidData": {
+    "description": ""
+  },
+  "enterMessageSubject": "Please enter message subject",
+  "@enterMessageSubject": {
     "description": ""
   }
 }

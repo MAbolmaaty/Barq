@@ -56,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   maxLines: 1,
                                   validator: (value) => value.isEmpty
                                       ? AppLocalizations.of(context)
-                                          .pleaseEnterEmail
+                                          .enterEmail
                                       : null,
                                   onSaved: (value) => _email = value,
                                   decoration: InputDecoration(
@@ -84,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   maxLines: 1,
                                   validator: (value) => value.isEmpty
                                       ? AppLocalizations.of(context)
-                                          .pleaseEnterPassword
+                                          .enterPassword
                                       : null,
                                   onSaved: (value) => _password = value,
                                   obscureText: true,

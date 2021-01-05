@@ -27,27 +27,6 @@ class _AllLinksScreenState extends State<AllLinksScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // return ChangeNotifierProvider(
-    //   create: (context) => WebsitesApi(),
-    //   child: Consumer<WebsitesApi>(
-    //     builder: (context, websitesApi, child) {
-    //       UserPreferences userPreferences = UserPreferences();
-    //       userPreferences.getUser().then((authenticationResponseModel) => {
-    //         websitesApi.getWebsites(authenticationResponseModel.user.sId, authenticationResponseModel.jwt).then((result) {
-    //           if(result['status']){
-    //             websites = result['data'];
-    //           }
-    //         })
-    //       });
-    //       return SafeArea(
-    //         child: Scaffold(
-    //           body: WebsitesApi.loading ? _loading() : buildDataWidget(),
-    //         ),
-    //       );
-    //     },
-    //   ),
-    // );
-
     return SafeArea(
       child: Scaffold(
         body: isLoading ? _loading() : buildDataWidget(),
@@ -56,28 +35,6 @@ class _AllLinksScreenState extends State<AllLinksScreen> {
   }
 
   void getDataFromAPI() async {
-    // var response = await http.get(Uri.parse(AppUrl.websites_url), headers: {
-    //   'Authorization':
-    //       'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmZGE4MzY5NjJkYWYyMDAxNzNjZmIyMCIsImlhdCI6MTYwODE1Njc5MSwiZXhwIjoxNjEwNzQ4NzkxfQ.V9VB-D_gaofRcsf-WPuSopT1a1oudZajsLbsydevkMs'
-    // });
-    // if (response.statusCode != 200) {
-    //   setState(() {
-    //     Flushbar(
-    //       title: AppLocalizations.of(context).loadingFailed,
-    //       message: AppLocalizations.of(context).couldNotFetchData,
-    //       duration: Duration(milliseconds: 1500),
-    //     ).show(context);
-    //   });
-    // }
-    // var parsedJson = await json.decode(response.body) as List;
-    // setState(() {
-    //   websites = parsedJson
-    //       .map((websitesResponseModel) =>
-    //           WebsitesResponseModel.fromJson(websitesResponseModel))
-    //       .toList();
-    //   websites = websites.reversed.toList();
-    // });
-
     isLoading = true;
     UserPreferences userPreferences = UserPreferences();
     userPreferences.getUser().then((authenticationResponseModel) => {

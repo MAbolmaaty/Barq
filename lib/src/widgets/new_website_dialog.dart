@@ -105,7 +105,7 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                               child: TextFormField(
                                 validator: (value) => value.isEmpty
                                     ? AppLocalizations.of(context)
-                                        .pleaseEnterWebsiteName
+                                        .enterWebsiteName
                                     : null,
                                 onSaved: (value) => _websiteName = value,
                                 decoration: InputDecoration(
@@ -128,7 +128,7 @@ class _NewWebsiteDialogState extends State<NewWebsiteDialog>
                               child: TextFormField(
                                 validator: (value) => value.isEmpty
                                     ? AppLocalizations.of(context)
-                                        .pleaseEnterWebsiteURL
+                                        .enterWebsiteURL
                                     : null,
                                 onSaved: (value) => _websiteURL = value,
                                 decoration: InputDecoration(

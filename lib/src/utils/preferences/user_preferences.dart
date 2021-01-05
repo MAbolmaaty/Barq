@@ -1,4 +1,5 @@
 import 'package:barq/src/models/authentication_response_model.dart';
+import 'package:barq/src/models/profile_response_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserPreferences {
@@ -11,6 +12,15 @@ class UserPreferences {
         'username', authenticationResponseModel.user.username);
     sharedPreferences.setString('email', authenticationResponseModel.user.email);
     sharedPreferences.setString('user_id', authenticationResponseModel.user.sId);
+
+    return true;
+  }
+
+  Future<bool> saveProfilePicture(ProfileResponseModel profileResponseModel) async {
+    final SharedPreferences sharedPreferences =
+    await SharedPreferences.getInstance();
+
+    sharedPreferences.setString('profile_picture_id', profileResponseModel.profilePicture.sId);
 
     return true;
   }
@@ -28,6 +38,15 @@ class UserPreferences {
         jwt: token, user: User(username: username, email: email, sId: userId));
   }
 
+  Future<String> getProfilePicture() async {
+    final SharedPreferences sharedPreferences =
+    await SharedPreferences.getInstance();
+
+    String profilePictureId = sharedPreferences.getString('profile_picture_id');
+
+    return profilePictureId;
+  }
+
   void removeUser() async {
     final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
 
@@ -35,6 +54,12 @@ class UserPreferences {
     sharedPreferences.remove('username');
     sharedPreferences.remove('email');
     sharedPreferences.remove('user_id');
+  }
+
+  void removeProfilePicture() async {
+    final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+
+    sharedPreferences.remove('profile_picture_id');
   }
 
   Future<String> getToken(args) async {

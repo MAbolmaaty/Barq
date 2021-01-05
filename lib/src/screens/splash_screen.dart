@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:barq/src/screens/bottom_nav_screen.dart';
 import 'package:barq/src/screens/login_screen.dart';
-import 'package:barq/src/utils/networking/user_api.dart';
+import 'package:barq/src/utils/networking/profile_api.dart';
 import 'package:barq/src/utils/preferences/user_preferences.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,9 @@ class _SplashScreenState extends State<SplashScreen> {
     userPreferences.getUser().then((authenticationResponseModel) => {
           if (authenticationResponseModel != null)
             {
-              UserApi().getUser(authenticationResponseModel.jwt).then((result) {
+              ProfileApi()
+                  .getProfile(authenticationResponseModel.jwt)
+                  .then((result) {
                 if (result['status']) {
                   Timer(
                       Duration(seconds: 3),

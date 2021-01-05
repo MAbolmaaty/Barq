@@ -197,24 +197,24 @@
   "@addWebsite": {
     "description": ""
   },
-  "pleaseEnterUsername": "من فضلك ادخل اسم المستخدم",
-  "@pleaseEnterUsername": {
+  "enterUsername": "من فضلك ادخل اسم المستخدم",
+  "@enterUsername": {
     "description": ""
   },
-  "pleaseEnterEmail": "من فضلك ادخل البريد الالكتروني",
-  "@pleaseEnterEmail": {
+  "enterEmail": "من فضلك ادخل البريد الالكتروني",
+  "@enterEmail": {
     "description": ""
   },
-  "pleaseEnterPassword": "من فضلك ادخل كلمة المرور",
-  "@pleaseEnterPassword": {
+  "enterPassword": "من فضلك ادخل كلمة المرور",
+  "@enterPassword": {
     "description": ""
   },
   "pleaseConfirmPassword": "من فضلك اعد كتابة كلمة المرور",
   "@pleaseConfirmPassword": {
     "description": ""
   },
-  "pleaseEnterPhoneNumber": "من فضلك ادخل رقم الهاتف",
-  "@pleaseEnterPhoneNumber": {
+  "enterPhoneNumber": "من فضلك ادخل رقم الهاتف",
+  "@enterPhoneNumber": {
     "description": ""
   },
   "registering": "جاري التسجيل ... من فضلك انتظر",
@@ -229,12 +229,12 @@
   "@passwordsDoNotMatch": {
     "description": ""
   },
-  "pleaseEnterWebsiteName": "من فضلك ادخل اسم الموقع",
-  "@pleaseEnterWebsiteName": {
+  "enterWebsiteName": "من فضلك ادخل اسم الموقع",
+  "@enterWebsiteName": {
     "description": ""
   },
-  "pleaseEnterWebsiteURL": "من فضلك ادخل رابط الموقع",
-  "@pleaseEnterWebsiteURL": {
+  "enterWebsiteURL": "من فضلك ادخل رابط الموقع",
+  "@enterWebsiteURL": {
     "description": ""
   },
   "addingNewWebsite": "اضافة موقع جديد",
@@ -255,6 +255,10 @@
   },
   "invalidData": "بيانات غير صحيحة",
   "@invalidData": {
+    "description": ""
+  },
+  "enterMessageSubject": "من فضلك ادخل موضوع الرسالة",
+  "@enterMessageSubject": {
     "description": ""
   }
 }
