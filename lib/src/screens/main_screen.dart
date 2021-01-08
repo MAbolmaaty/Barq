@@ -44,7 +44,6 @@ class _MainScreenState extends State<MainScreen> {
                   unselectedLabelColor: Colors.grey,
                   labelColor: Colors.orange,
                   indicatorColor: Colors.orange,
-                  labelStyle: TextStyle(fontFamily: 'Cairo'),
                   tabs: [
                     Tab(text: AppLocalizations.of(context).all),
                     Tab(text: AppLocalizations.of(context).activated),

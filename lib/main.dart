@@ -37,7 +37,6 @@ class _AppState extends State<App> {
           debugShowCheckedModeBanner: false,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
-          locale: locale.locale,
           theme: ThemeData(primaryColor: const Color(0xFF333333),fontFamily: 'Cairo'),
           home: SplashScreen(),
         );

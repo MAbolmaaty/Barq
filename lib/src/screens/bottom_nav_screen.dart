@@ -1,5 +1,8 @@
 
-import 'package:barq/src/models/bottom_nav_item.dart';
+import 'package:barq/src/screens/main_screen.dart';
+import 'package:barq/src/screens/notifications_screen.dart';
+import 'package:barq/src/screens/profile_screen.dart';
+import 'package:barq/src/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavScreen extends StatefulWidget{
@@ -20,10 +23,10 @@ class _BottomNavScreenState extends State<BottomNavScreen>{
       body: IndexedStack(
           index: _currentIndex,
           children: [
-            BottomNavItem.allItems[0].screen,
-            BottomNavItem.allItems[1].screen,
-            BottomNavItem.allItems[2].screen,
-            BottomNavItem.allItems[3].screen,
+            MainScreen(),
+            NotificationsScreen(),
+            ProfileScreen(),
+            SettingsScreen(),
           ],
         ),
       bottomNavigationBar: BottomNavigationBar(
@@ -36,11 +39,11 @@ class _BottomNavScreenState extends State<BottomNavScreen>{
             });
           },
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("")),
+            BottomNavigationBarItem(icon: Icon(Icons.home),label: ""),
             BottomNavigationBarItem(
-                icon: Icon(Icons.notifications), title: Text("")),
-            BottomNavigationBarItem(icon: Icon(Icons.person), title: Text("")),
-            BottomNavigationBarItem(icon: Icon(Icons.settings), title: Text(""))
+                icon: Icon(Icons.notifications),label: "" ),
+            BottomNavigationBarItem(icon: Icon(Icons.person),label: "" ),
+            BottomNavigationBarItem(icon: Icon(Icons.settings), label: "")
           ]),
     );
   }

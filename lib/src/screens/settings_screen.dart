@@ -6,7 +6,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-
 //import 'file:///C:/MU/barq/lib/src/utils/localization/app_locale.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -22,7 +21,7 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  bool isVisible = false;
+  bool isLanguageListVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +39,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         children: <Widget>[
           GestureDetector(
               onTap: () => setState(() {
-                    isVisible ? isVisible = false : isVisible = true;
+                    isLanguageListVisible ? isLanguageListVisible = false : isLanguageListVisible = true;
                   }),
               child: Container(
                 height: 60,
@@ -55,8 +54,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       style: TextStyle(
                           fontSize: 14,
                           color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                      fontFamily: 'Cairo',),
+                          fontWeight: FontWeight.w500,),
                     ),
                   ),
                   Align(
@@ -68,7 +66,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ]),
               )),
           Visibility(
-              visible: isVisible,
+              visible: isLanguageListVisible,
               child: GestureDetector(
                   onTap: () => setState(() {
                         locale.changeLocale(Locale('ar'));
@@ -80,20 +78,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     child: Stack(
                       children: [
                         Align(
+                          alignment: locale.locale == Locale('en') ? Alignment.centerLeft : Alignment.centerRight,
                           child: Padding(
                               padding: EdgeInsets.only(left: 25, right: 25),
                               child: locale.locale == Locale('ar')
                                   ? Text(
                                       AppLocalizations.of(context).arabic,
                                       style: TextStyle(
-                                          color: const Color(0xffFEC200),fontFamily: 'Cairo',),
+                                          color: const Color(0xffFEC200),),
                                     )
                                   : Text(
                                       AppLocalizations.of(context).arabic,
                                       style: TextStyle(
-                                          color: const Color(0xff9e9e9e),fontFamily: 'Cairo',),
+                                          color: const Color(0xff9e9e9e),),
                                     )),
-                          alignment: locale.locale == Locale('en') ? Alignment.centerLeft : Alignment.centerRight,
                         ),
                         Align(
                           child: Padding(
@@ -113,7 +111,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     ),
                   ))),
           Visibility(
-              visible: isVisible,
+              visible: isLanguageListVisible,
               child: GestureDetector(
                   onTap: () => setState(() {
                         locale.changeLocale(Locale('en'));
